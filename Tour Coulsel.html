@@ -1,0 +1,3206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilimanjaro Routes | Sangu African Safari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --ink: #0b1612;
+            --forest: #16291f;
+            --forest-2: #1f3a2e;
+            --gold: #c9a24d;
+            --gold-light: #ecd28f;
+            --gold-dark: #a88336;
+            --cream: #f8f5ec;
+            --text: #3b3a2f;
+            --muted: #6f6a5a;
+            --line: #e4dccb;
+            --ease: cubic-bezier(.22, .8, .2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", system-ui, sans-serif;
+            background: var(--cream);
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            position: relative;
+            isolation: isolate;
+            color: #fff;
+            min-height: 760px;
+            overflow: hidden;
+            background: var(--ink) url("image/kilimanjaro bg.jpg") center 35% / cover no-repeat;
+            clip-path: polygon(0 0, 100% 0, 100% 94%, 62% 100%, 0 96%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(8, 15, 12, .92) 0%, rgba(8, 15, 12, .55) 45%, rgba(8, 15, 12, .15) 100%),
+                linear-gradient(180deg, rgba(8, 15, 12, .5) 0%, rgba(8, 15, 12, 0) 35%);
+        }
+
+        .nav {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 26px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            font-size: 30px;
+        }
+
+        .brand-title {
+            font: 700 19px "Playfair Display", serif;
+            letter-spacing: .14em;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .brand-sub {
+            font-size: 9.5px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-top: 6px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 38px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .85);
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 6px 0;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-light);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -4px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 24px;
+            border-radius: 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            background: rgba(8, 15, 12, .35);
+            backdrop-filter: blur(6px);
+            transition: background .3s, color .3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--ink);
+        }
+
+        .hero-grid {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 56px 48px 0;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
+        .eyebrow::after {
+            content: "";
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            font: 600 clamp(2.8rem, 5vw, 4.4rem)/1.08 "Playfair Display", serif;
+            margin: 22px 0 22px;
+            text-shadow: 0 12px 40px rgba(0, 0, 0, .45);
+        }
+
+        .hero h1 em {
+            color: var(--gold-light);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .hero .lead {
+            font-size: 18px;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, .88);
+            max-width: 560px;
+            margin: 0 0 40px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 28px;
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            line-height: 1.4;
+            color: #fff;
+        }
+
+        .chip+.chip {
+            border-left: 1px solid rgba(236, 210, 143, .3);
+        }
+
+        .chip:first-child {
+            padding-left: 0;
+        }
+
+        .chip i {
+            font-size: 26px;
+            color: var(--gold-light);
+        }
+
+        /* Featured card */
+        .featured {
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            padding: 36px 36px 32px;
+            background: linear-gradient(160deg, rgba(22, 41, 31, .94), rgba(8, 16, 12, .96));
+            border: 1px solid rgba(236, 210, 143, .35);
+            box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7);
+            backdrop-filter: blur(10px);
+        }
+
+        .featured::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+        }
+
+        .f-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
+        .f-top i {
+            font-size: 22px;
+        }
+
+        .f-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 18px 0 6px;
+        }
+
+        .f-title h3 {
+            font: 600 36px/1.1 "Playfair Display", serif;
+            margin: 0;
+        }
+
+        .premium {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: 7px 14px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #ecd28f, #c9a24d);
+            color: var(--ink);
+        }
+
+        .f-sub {
+            font-size: 17px;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin: 0 0 18px;
+        }
+
+        .f-desc {
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .82);
+            margin: 0 0 24px;
+        }
+
+        .f-rows {
+            display: grid;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .f-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .f-row i {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(236, 210, 143, .12);
+            color: var(--gold-light);
+            font-size: 16px;
+        }
+
+        .btn-gold {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            border-radius: 40px;
+            padding: 18px 26px;
+            background: linear-gradient(135deg, #b8893a, #ecd28f 55%, #c9a24d);
+            color: var(--ink);
+            font-size: 13.5px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 18px 30px -14px rgba(201, 162, 77, .7);
+            transition: transform .35s var(--ease), box-shadow .35s;
+        }
+
+        .btn-gold::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .6), transparent);
+            transform: skewX(-20deg);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 36px -14px rgba(201, 162, 77, .85);
+        }
+
+        .btn-gold:hover::after {
+            animation: sheen .9s var(--ease);
+        }
+
+        @keyframes sheen {
+            from {
+                left: -80%;
+            }
+
+            to {
+                left: 130%;
+            }
+        }
+
+        .btn-gold i {
+            transition: transform .3s var(--ease);
+        }
+
+        .btn-gold:hover i {
+            transform: translateX(5px);
+        }
+
+        .f-script {
+            position: absolute;
+            right: 28px;
+            bottom: 26px;
+            font: italic 500 22px/1.25 "Playfair Display", serif;
+            color: var(--gold-light);
+            opacity: .65;
+            text-align: right;
+        }
+
+        /* ================= ROUTES ================= */
+        .routes {
+            padding: 60px 48px 40px;
+            max-width: 1360px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .routes-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 34px;
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 12.5px;
+            font-weight: 800;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+        }
+
+        .section-kicker::after {
+            content: "";
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .routes-head h2 {
+            font: 600 clamp(2.2rem, 3.8vw, 3.2rem)/1.1 "Playfair Display", serif;
+            color: var(--ink);
+            margin: 14px 0 0;
+        }
+
+        .pager {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .pager-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid #d6cbb0;
+            background: #fff;
+            color: var(--ink);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: .35s var(--ease);
+        }
+
+        .pager-btn:hover:not(:disabled) {
+            background: var(--ink);
+            color: var(--gold-light);
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        .pager-btn:disabled {
+            opacity: .35;
+            cursor: default;
+        }
+
+        .pager-count {
+            font: 600 18px "Playfair Display", serif;
+            color: var(--ink);
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .pager-count span {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .viewport {
+            overflow: hidden;
+            border-radius: 24px;
+        }
+
+        .track {
+            display: flex;
+            gap: 26px;
+            transition: transform .8s var(--ease);
+            will-change: transform;
+        }
+
+        .route-card {
+            position: relative;
+            flex: 0 0 calc((100% - 52px) / 3);
+            height: 440px;
+            border-radius: 22px;
+            overflow: hidden;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 30px 60px -36px rgba(11, 22, 18, .6);
+            isolation: isolate;
+            transition: transform .6s var(--ease), box-shadow .6s;
+        }
+
+        .route-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 44px 70px -36px rgba(11, 22, 18, .75);
+        }
+
+        .route-card .bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.4s var(--ease);
+        }
+
+        .route-card:hover .bg {
+            transform: scale(1.06);
+        }
+
+        .route-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(11, 22, 18, 0) 30%, rgba(11, 22, 18, .92) 75%, rgba(11, 22, 18, .96) 100%);
+        }
+
+        .r-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 16px;
+            border-radius: 30px;
+            background: rgba(11, 22, 18, .85);
+            border: 1px solid rgba(236, 210, 143, .35);
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .r-badge i {
+            font-size: 13px;
+        }
+
+        .r-body {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 26px 26px 22px;
+        }
+
+        .r-title {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .r-title i {
+            font-size: 26px;
+            color: var(--gold-light);
+        }
+
+        .r-title h3 {
+            font: 600 24px "Playfair Display", serif;
+            margin: 0;
+        }
+
+        .r-meta {
+            font-size: 14px;
+            color: var(--gold-light);
+            font-weight: 700;
+            margin: 8px 0 12px;
+        }
+
+        .r-desc {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .8);
+            margin: 0 0 18px;
+            min-height: 46px;
+        }
+
+        .r-stats {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(236, 210, 143, .2);
+        }
+
+        .r-stat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5px;
+            line-height: 1.3;
+            color: rgba(255, 255, 255, .88);
+            font-weight: 600;
+        }
+
+        .r-stat i {
+            color: var(--gold-light);
+            font-size: 14px;
+        }
+
+        .r-go {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            transition: .4s var(--ease);
+        }
+
+        .route-card:hover .r-go {
+            background: var(--gold);
+            color: var(--ink);
+            transform: translateX(4px);
+        }
+
+        /* Footer strip */
+        .strip {
+            text-align: center;
+            padding: 28px 20px 60px;
+        }
+
+        .strip-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+        }
+
+        .strip-line span.rule {
+            width: 90px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+
+        .strip-line span.rule.r {
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .strip-line i {
+            color: var(--gold-dark);
+            font-size: 22px;
+        }
+
+        .strip p {
+            margin: 12px 0 0;
+            font-size: 12px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-weight: 800;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1100px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .route-card {
+                flex-basis: calc((100% - 26px) / 2);
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav,
+            .hero-grid,
+            .routes {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+            .hero {
+                clip-path: none;
+                min-height: 0;
+            }
+
+            .chips {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .chip {
+                padding: 0;
+            }
+
+            .chip+.chip {
+                border-left: 0;
+            }
+
+            .route-card {
+                flex-basis: 100%;
+                height: 420px;
+            }
+
+            .f-title h3 {
+                font-size: 28px;
+            }
+
+            .f-script {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ---------- HEADER STYLING ---------- */
+        #header {
+            --nav-gold: #c6a15b;
+            --nav-gold-light: #ead4a3;
+            --nav-forest: #0c1c15;
+
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+
+            height: 150px;
+            padding: 0;
+
+            background: rgba(4, 12, 10, 0.45);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #header,
+        #header * {
+            box-sizing: border-box;
+        }
+
+        #header.scrolled {
+            height: 75px;
+            background: rgba(4, 12, 10, 0.96);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        #header .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+
+            width: min(1320px, calc(100% - 48px));
+            height: 100%;
+            margin-inline: auto;
+        }
+
+        /* Brand Logo */
+        #header .brand {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 11px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #header .brand-mark {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--nav-gold);
+            border-radius: 50%;
+            color: var(--nav-gold-light);
+            font-size: 1.4rem;
+        }
+
+        #header .brand-title {
+            color: var(--nav-gold-light);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.45rem;
+            line-height: 1;
+            letter-spacing: 0.14em;
+        }
+
+        #header .brand-subtitle {
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 0.48rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        /* Desktop Navigation */
+        #header .desktop-menu {
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 2vw, 30px);
+        }
+
+        #header .nav-link,
+        #header .nav-dropdown-trigger {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            padding: 10px 0;
+            border: 0;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.25s ease;
+        }
+
+        #header .nav-link::after,
+        #header .nav-dropdown-trigger::after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--nav-gold);
+            transition: width 0.25s ease;
+        }
+
+        #header .nav-link:hover,
+        #header .nav-dropdown-trigger:hover,
+        #header .nav-dropdown-trigger[aria-expanded="true"] {
+            color: var(--nav-gold-light);
+        }
+
+        #header .nav-link:hover::after,
+        #header .nav-link.active::after,
+        #header .nav-dropdown-trigger[aria-expanded="true"]::after {
+            width: 100%;
+        }
+
+        /* Dropdowns */
+        #header .nav-dropdown {
+            position: relative;
+        }
+
+        #header .nav-dropdown-panel {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: -20px;
+            z-index: 110;
+            width: 350px;
+            overflow: hidden;
+            background: #fbf8f1;
+            border: 1px solid rgba(198, 161, 91, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        #header .nav-dropdown-panel[hidden] {
+            display: none;
+        }
+
+        #header .dropdown-heading {
+            padding: 20px;
+            border-bottom: 1px solid rgba(198, 161, 91, 0.2);
+            background: #f2ecdf;
+        }
+
+        #header .dropdown-eyebrow {
+            display: block;
+            margin-bottom: 6px;
+            color: #95713a;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+        }
+
+        #header .dropdown-heading h3 {
+            margin: 0;
+            color: #20392b;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        #header .dropdown-links {
+            display: grid;
+            gap: 2px;
+            margin: 0;
+            padding: 10px;
+            list-style: none;
+        }
+
+        #header .dropdown-links a,
+        #header .dropdown-booking {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            border: 0;
+            border-radius: 8px;
+            background: transparent;
+            color: #233b2d;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #header .dropdown-links a:hover,
+        #header .dropdown-booking:hover {
+            background: #eee7d9;
+        }
+
+        #header .dropdown-links span {
+            display: block;
+            color: #233b2d;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 0.95rem;
+        }
+
+        #header .dropdown-links small {
+            display: block;
+            margin-top: 2px;
+            color: #74796e;
+            font-size: 0.72rem;
+        }
+
+        #header .dropdown-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-top: 1px solid rgba(198, 161, 91, 0.2);
+            background: #f2ecdf;
+            color: #80602d;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Actions */
+        #header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        #header .book-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border: 1px solid var(--nav-gold);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--nav-gold-light);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        #header .book-button:hover {
+            background: var(--nav-gold);
+            color: #0c1c15;
+        }
+
+        #header .menu-toggle {
+            display: none;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(198, 161, 91, 0.4);
+            border-radius: 8px;
+            background: transparent;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsive Header */
+        @media (max-width: 1024px) {
+            #header .menu-toggle {
+                display: grid;
+            }
+
+            #header .desktop-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                padding: 16px;
+                background: #0c1c15;
+                border-top: 1px solid rgba(198, 161, 91, 0.2);
+                box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            #header .desktop-menu.open {
+                display: flex;
+            }
+
+            #header .nav-link,
+            #header .nav-dropdown-trigger {
+                width: 100%;
+                padding: 14px 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                font-size: 1.1rem;
+            }
+
+            #header .nav-dropdown-panel {
+                position: static;
+                width: 100%;
+                margin: 8px 0 14px;
+                border-radius: 10px;
+                box-shadow: none;
+            }
+        }
+    </style>
+    <style id="hero-spacing">
+        /* Push the hero content down so it clears the navigation bar */
+        .hero {
+            min-height: 860px;
+        }
+
+        .hero-grid {
+            padding-top: clamp(150px, 20vh, 230px);
+        }
+
+        @media (max-width: 1100px) {
+            .hero {
+                min-height: 0;
+            }
+
+            .hero-grid {
+                padding-top: 140px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .hero-grid {
+                padding-top: 120px;
+            }
+        }
+
+        /* ---------- Modal shell ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(4, 10, 8, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .4s var(--ease), visibility .4s;
+    }
+
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 1040px;
+      max-height: 94vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      background: var(--cream);
+      border-radius: 22px;
+      box-shadow: 0 50px 120px -20px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 255, 255, .6);
+      transform: translateY(40px) scale(.96);
+      opacity: 0;
+      transition: transform .6s var(--ease), opacity .5s var(--ease);
+    }
+
+    .modal.open .modal-card {
+      transform: none;
+      opacity: 1;
+    }
+
+    /* ---------- Intro panel ---------- */
+    .booking-intro {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 46px 40px;
+      background:
+        linear-gradient(180deg, rgba(4, 12, 9, .35) 0%, rgba(4, 12, 9, .92) 100%),
+        url("https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=900&q=80") center/cover;
+    }
+
+    .booking-intro::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(500px 240px at 0% 0%, rgba(201, 162, 77, .25), transparent 60%);
+    }
+
+    .booking-intro>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .booking-intro h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 2.6rem;
+      line-height: 1.1;
+      margin: 20px 0 16px;
+    }
+
+    .booking-intro h2 em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .booking-intro p {
+      color: rgba(255, 255, 255, .78);
+      font-size: .92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .booking-steps {
+      list-style: none;
+      margin: 34px 0 0;
+      padding: 0;
+      counter-reset: s;
+    }
+
+    .booking-steps li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 18px 0;
+      color: rgba(255, 255, 255, .86);
+      font-size: .85rem;
+      transition: opacity .4s;
+    }
+
+    .booking-steps li .sn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201, 162, 77, .6);
+      color: var(--gold-light);
+      font-size: .72rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .04);
+      transition: .4s var(--ease);
+    }
+
+    .booking-steps li.done .sn {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .booking-steps li.current .sn {
+      box-shadow: 0 0 0 6px rgba(201, 162, 77, .18);
+    }
+
+    .booking-steps li.current {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .trust {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .trust i {
+      color: var(--gold-light);
+    }
+
+    /* ---------- Main panel ---------- */
+    .booking-main {
+      position: relative;
+      padding: 42px 46px 34px;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      transition: .3s var(--ease);
+      z-index: 3;
+    }
+
+    .modal-close:hover {
+      color: var(--ink);
+      border-color: var(--gold);
+      transform: rotate(90deg);
+    }
+
+    .booking-main h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--ink);
+      font-size: 2rem;
+      margin: 0 0 6px;
+    }
+
+    .booking-sub {
+      color: var(--muted);
+      font-size: .85rem;
+      margin: 0 0 24px;
+    }
+
+    /* Progress */
+    .progress {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .progress span {
+      height: 4px;
+      border-radius: 4px;
+      background: #ebe5d8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress span::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #b8893a, var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .6s var(--ease);
+    }
+
+    .progress span.on::after {
+      transform: scaleX(1);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: -18px 0 26px;
+    }
+
+    /* Steps */
+    .booking-step {
+      display: none;
+    }
+
+    .booking-step.active {
+      display: block;
+      animation: stepIn .55s var(--ease) both;
+    }
+
+    .booking-step.leaving {
+      animation: stepOut .25s ease both;
+    }
+
+    @keyframes stepIn {
+      from {
+        opacity: 0;
+        transform: translateX(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes stepOut {
+      to {
+        opacity: 0;
+        transform: translateX(-16px);
+      }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      display: block;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #5c645d;
+      margin-bottom: 8px;
+    }
+
+    .field .control {
+      position: relative;
+    }
+
+    .field .control>i.lead {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a39c8e;
+      font-size: .85rem;
+      pointer-events: none;
+      transition: color .3s;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      font: 400 .92rem "DM Sans", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #ddd5c6;
+      border-radius: 12px;
+      padding: 14px 16px 14px 42px;
+      outline: none;
+      transition: border-color .3s, box-shadow .3s, background .3s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field select {
+      padding-right: 40px;
+      cursor: pointer;
+      background-image: none;
+    }
+
+    .field .control::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a39c8e;
+      font-size: .7rem;
+      pointer-events: none;
+    }
+
+    .field.no-chevron .control::after {
+      display: none;
+    }
+
+    .field textarea {
+      padding-left: 16px;
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(201, 162, 77, .15);
+    }
+
+    .field .control:focus-within>i.lead {
+      color: var(--gold);
+    }
+
+    .field.invalid input,
+    .field.invalid select,
+    .field.invalid textarea {
+      border-color: #d9534f;
+      box-shadow: 0 0 0 4px rgba(217, 83, 79, .1);
+    }
+
+    .field .err {
+      display: none;
+      margin-top: 6px;
+      font-size: .74rem;
+      color: #c2423d;
+    }
+
+    .field.invalid .err {
+      display: block;
+      animation: shake .4s;
+    }
+
+    @keyframes shake {
+
+      20%,
+      60% {
+        transform: translateX(-4px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    /* Stepper */
+    .stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd5c6;
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .stepper button {
+      width: 46px;
+      height: 48px;
+      border: 0;
+      background: #f8f4ea;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: .2s;
+    }
+
+    .stepper button:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .stepper input {
+      flex: 1;
+      text-align: center;
+      border: 0;
+      outline: 0;
+      font: 600 1rem "DM Sans", sans-serif;
+      color: var(--ink);
+      padding: 12px 0;
+      min-width: 0;
+      -moz-appearance: textfield;
+    }
+
+    .stepper input::-webkit-inner-spin-button,
+    .stepper input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Style cards */
+    .style-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .style-option {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .style-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .style-option .card {
+      height: 100%;
+      border: 1px solid #ddd5c6;
+      border-radius: 14px;
+      background: #fff;
+      padding: 16px 8px 14px;
+      text-align: center;
+      transition: .35s var(--ease);
+    }
+
+    .style-option .card i {
+      display: block;
+      font-size: 1.15rem;
+      color: #a39c8e;
+      margin-bottom: 8px;
+      transition: .3s;
+    }
+
+    .style-option .card b {
+      display: block;
+      font-size: .8rem;
+      color: #3f4740;
+      font-weight: 700;
+    }
+
+    .style-option .card small {
+      display: block;
+      font-size: .66rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .style-option:hover .card {
+      transform: translateY(-3px);
+      border-color: #cfc3a8;
+    }
+
+    .style-option input:checked+.card {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, #fffaf0, #fbf1da);
+      box-shadow: 0 10px 24px -10px rgba(201, 162, 77, .55);
+    }
+
+    .style-option input:checked+.card i {
+      color: var(--gold);
+      transform: scale(1.12);
+    }
+
+    .style-option input:checked+.card b {
+      color: #7d5b1b;
+    }
+
+    .style-option input:focus-visible+.card {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* Review */
+    .review {
+      grid-column: 1 / -1;
+      border: 1px dashed #d8cdb6;
+      border-radius: 14px;
+      padding: 18px 20px;
+      background: #fffaf0;
+    }
+
+    .review h4 {
+      margin: 0 0 12px;
+      font: 700 .66rem "DM Sans", sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #8c6827;
+    }
+
+    .review dl {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 22px;
+      margin: 0;
+    }
+
+    .review dt {
+      font-size: .7rem;
+      color: var(--muted);
+    }
+
+    .review dd {
+      margin: 2px 0 0;
+      font-size: .88rem;
+      color: var(--ink);
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    /* Actions */
+    .step-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 40px;
+      cursor: pointer;
+      font: 700 .74rem "DM Sans", sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 15px 26px;
+      transition: .35s var(--ease);
+    }
+
+    .btn-primary {
+      border: 0;
+      color: var(--ink);
+      background: linear-gradient(135deg, #b8893a, #ecd28f 55%, #c9a24d);
+      box-shadow: 0 12px 28px -10px rgba(201, 162, 77, .7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px -10px rgba(201, 162, 77, .8);
+    }
+
+    .btn-primary:disabled {
+      opacity: .7;
+      cursor: wait;
+      transform: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #cfc6b7;
+      color: #5d625d;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .btn i.arrow {
+      transition: transform .3s var(--ease);
+    }
+
+    .btn-primary:hover i.arrow {
+      transform: translateX(4px);
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(13, 24, 21, .25);
+      border-top-color: var(--ink);
+      animation: spin .8s linear infinite;
+      display: none;
+    }
+
+    .btn-primary.loading .spinner {
+      display: inline-block;
+    }
+
+    .btn-primary.loading .label-default {
+      opacity: .6;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .booking-note {
+      margin: 16px 0 0;
+      font-size: .74rem;
+      color: #767c75;
+      line-height: 1.6;
+    }
+
+    .booking-note i {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+
+    /* Success */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 50px 10px 20px;
+    }
+
+    .form-success.show {
+      display: block;
+      animation: stepIn .7s var(--ease) both;
+    }
+
+    .success-ring {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fbf1da, #f2dca6);
+      color: #9b7326;
+      font-size: 2rem;
+    }
+
+    .success-ring::before,
+    .success-ring::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      opacity: 0;
+      animation: ring 2.4s var(--ease) infinite;
+    }
+
+    .success-ring::after {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes ring {
+      0% {
+        transform: scale(.9);
+        opacity: .8;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .form-success h3 {
+      font-size: 2.2rem;
+    }
+
+    .form-success p {
+      color: #666d66;
+      line-height: 1.75;
+      max-width: 440px;
+      margin: 12px auto 10px;
+    }
+
+    .ref {
+      display: inline-block;
+      margin: 8px 0 26px;
+      padding: 8px 16px;
+      border: 1px dashed var(--gold);
+      border-radius: 30px;
+      font: 700 .8rem "DM Sans", sans-serif;
+      letter-spacing: .14em;
+      color: #8c6827;
+      background: #fffaf0;
+    }
+
+    /* Lock body scroll */
+    body.locked {
+      overflow: hidden;
+    }
+
+    /* ---------- Responsive ---------- */
+    /* Hakikisha kwenye skrini za simu na tablet (chini ya 900px), vipengele vinajipanga kwa mstari mmoja (stack) */
+    @media (max-width: 900px) {
+      .page {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      .filters {
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+      }
+
+      section {
+        width: 100% !important;
+        clear: both !important;
+      }
+    }
+
+    .sf-footer {
+            position: relative;
+            background:
+                radial-gradient(900px 300px at 10% 0%, rgba(235, 184, 41, .08), transparent 60%),
+                radial-gradient(700px 280px at 100% 100%, rgba(131, 191, 79, .06), transparent 60%),
+                linear-gradient(180deg, #0c1a12 0%, #070e0a 100%);
+            color: #b9c2bc;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .sf-footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #EBB829, transparent);
+        }
+
+        .sf-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Top: newsletter band */
+        .sf-news {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 56px 0 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .sf-news-text .sf-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #EBB829;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+        }
+
+        .sf-news-text h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #fff;
+            font-weight: 700;
+            font-size: 28px;
+            margin-top: 10px;
+            line-height: 1.2;
+        }
+
+        .sf-form {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 999px;
+            padding: 5px;
+            min-width: min(100%, 420px);
+            transition: border-color .3s, box-shadow .3s;
+        }
+
+        .sf-form:focus-within {
+            border-color: #EBB829;
+            box-shadow: 0 0 0 4px rgba(235, 184, 41, .15);
+        }
+
+        .sf-form i {
+            color: #7d8a82;
+            margin: 0 12px 0 16px;
+        }
+
+        .sf-form input {
+            flex: 1;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            color: #fff;
+            font: inherit;
+            padding: 12px 0;
+            min-width: 0;
+        }
+
+        .sf-form input::placeholder {
+            color: #6f7b74;
+        }
+
+        .sf-form button {
+            border: 0;
+            cursor: pointer;
+            border-radius: 999px;
+            padding: 12px 22px;
+            font: inherit;
+            font-weight: 600;
+            color: #14200f;
+            background: linear-gradient(135deg, #f6d365, #EBB829 55%, #c99a1a);
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .sf-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 22px -6px rgba(235, 184, 41, .55);
+        }
+
+        .sf-thanks {
+            display: none;
+            color: #83BF4F;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* Main grid */
+        .sf-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.1fr 1.2fr;
+            gap: 48px;
+            padding: 56px 0 44px;
+        }
+
+        .sf-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .sf-mark {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(235, 184, 41, .18), rgba(235, 184, 41, .04));
+            border: 1px solid rgba(235, 184, 41, .45);
+            color: #EBB829;
+            font-size: 22px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 10px 30px -10px rgba(235, 184, 41, .4);
+        }
+
+        .sf-brand-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            color: #fff;
+            font-size: 24px;
+            letter-spacing: .14em;
+            line-height: 1;
+        }
+
+        .sf-brand-sub {
+            display: block;
+            margin-top: 7px;
+            font-size: 9.5px;
+            font-weight: 600;
+            letter-spacing: .34em;
+            text-transform: uppercase;
+            color: #EBB829;
+        }
+
+        .sf-about {
+            margin-top: 22px;
+            line-height: 1.8;
+            max-width: 320px;
+            color: #9aa59f;
+        }
+
+        .sf-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .sf-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d7ddd9;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .10);
+            text-decoration: none;
+            transition: all .3s ease;
+            font-size: 15px;
+        }
+
+        .sf-social a:hover {
+            background: #EBB829;
+            color: #14200f;
+            border-color: #EBB829;
+            transform: translateY(-3px);
+        }
+
+        .sf-col h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #fff;
+            font-weight: 700;
+            font-size: 17px;
+            margin: 0 0 22px;
+            position: relative;
+            padding-bottom: 14px;
+        }
+
+        .sf-col h4::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 34px;
+            height: 2px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #EBB829, #83BF4F);
+        }
+
+        .sf-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .sf-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #aab4ae;
+            text-decoration: none;
+            transition: color .25s, transform .25s;
+        }
+
+        .sf-links a i {
+            font-size: 9px;
+            color: #EBB829;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: all .3s ease;
+        }
+
+        .sf-links a:hover {
+            color: #EBB829;
+            transform: translateX(4px);
+        }
+
+        .sf-links a:hover i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .sf-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            color: #aab4ae;
+        }
+
+        .sf-contact .sf-ci {
+            width: 36px;
+            height: 36px;
+            border-radius: 11px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(235, 184, 41, .08);
+            border: 1px solid rgba(235, 184, 41, .22);
+            color: #EBB829;
+            font-size: 14px;
+        }
+
+        .sf-contact small {
+            display: block;
+            font-size: 10px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #6f7b74;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .sf-contact a {
+            color: #e6ebe8;
+            text-decoration: none;
+            transition: color .25s;
+        }
+
+        .sf-contact a:hover {
+            color: #EBB829;
+        }
+
+        .sf-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(37, 211, 102, .1);
+            border: 1px solid rgba(37, 211, 102, .35);
+            color: #5fe38f !important;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all .3s ease;
+        }
+
+        .sf-wa:hover {
+            background: #25d366;
+            color: #06210f !important;
+            transform: translateY(-2px);
+        }
+
+        /* Bottom bar */
+        .sf-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 24px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            font-size: 12.5px;
+            color: #6f7b74;
+        }
+
+        .sf-legal {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 18px;
+        }
+
+        .sf-legal a {
+            color: #8f9b94;
+            text-decoration: none;
+            transition: color .25s;
+        }
+
+        .sf-legal a:hover {
+            color: #EBB829;
+        }
+
+        .sf-legal .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #3b4741;
+        }
+
+        .sf-top {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .12);
+            color: #EBB829;
+            text-decoration: none;
+            transition: all .3s ease;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .sf-top:hover {
+            background: #EBB829;
+            color: #14200f;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 960px) {
+            .sf-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 42px 36px;
+            }
+
+            .sf-grid>div:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sf-wrap {
+                padding: 0 22px;
+            }
+
+            .sf-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sf-news {
+                padding: 44px 0 36px;
+            }
+
+            .sf-news-text h3 {
+                font-size: 24px;
+            }
+
+            .sf-form {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sf-footer * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <!-- HEADER -->
+        <header id="header">
+            <div class="nav">
+
+                <!-- Brand Logo -->
+                <a href="#home" class="brand" aria-label="Sangu African Safari home">
+                    <div class="brand-mark">🐘</div>
+                    <div>
+                        <div class="brand-title">SANGU</div>
+                        <div class="brand-subtitle">African Safari</div>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="desktop-menu" id="mainMenu" aria-label="Main navigation">
+                    <a href="#home" class="nav-link active">Home</a>
+
+                    <!-- Top Tours Dropdown -->
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-dropdown-trigger" aria-expanded="false"
+                            onclick="toggleDropdown(this)">
+                            Top Tours <i class="fa-solid fa-chevron-down"
+                                style="font-size:0.75rem; margin-left:2px;"></i>
+                        </button>
+
+                        <div class="nav-dropdown-panel" hidden>
+                            <div class="dropdown-heading">
+                                <span class="dropdown-eyebrow">THE SANGU COLLECTION</span>
+                                <h3>Find your next adventure</h3>
+                            </div>
+                            <ul class="dropdown-links">
+                                <li><a href="#topTours"><span>Tanzania Safari</span><small>Wildlife and iconic national
+                                            parks</small></a>
+                                </li>
+                                <li><a href="#topTours"><span>Safari & Zanzibar</span><small>Bush adventures and island
+                                            escapes</small></a></li>
+                                <li><a href="#topTours"><span>Mount Kilimanjaro</span><small>Explore our mountain
+                                            adventures</small></a>
+                                </li>
+                                <li><a href="#topTours"><span>Kilimanjaro & Safari</span><small>Mountain trails and
+                                            wildlife
+                                            journeys</small></a></li>
+                            </ul>
+                            <a href="#topTours" class="dropdown-footer">Explore all top tours ↗</a>
+                        </div>
+                    </div>
+
+                    <!-- Safaris Dropdown -->
+                    <div class="nav-dropdown">
+                        <button type="button" class="nav-dropdown-trigger" aria-expanded="false"
+                            onclick="toggleDropdown(this)">
+                            Safaris <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; margin-left:2px;"></i>
+                        </button>
+
+                        <div class="nav-dropdown-panel" hidden>
+                            <div class="dropdown-heading">
+                                <span class="dropdown-eyebrow">YOUR SAFARI, YOUR WAY</span>
+                                <h3>A journey made for you</h3>
+                            </div>
+                            <ul class="dropdown-links">
+                                <li><a href="#safaris"><span>Private Tanzania Safaris</span><small>Discover our safari
+                                            collection</small></a></li>
+                                <li><a href="#safaris"><span>Tanzania Wildlife Tours</span><small>Explore our Tanzania
+                                            itineraries</small></a></li>
+                                <li><a href="#safaris"><span>Safari & Beach Holidays</span><small>Combine your safari
+                                            with
+                                            Zanzibar</small></a></li>
+                            </ul>
+                            <a href="#safaris" class="dropdown-footer">Explore all safaris ↗</a>
+                        </div>
+                    </div>
+
+                    <a href="#destinations" class="nav-link">Destinations</a>
+                    <a href="#experiences" class="nav-link">Experiences</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Header Right Actions -->
+                <div class="nav-actions">
+                    <button type="button" class="book-button">
+                        <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+                        <span>Book Now</span>
+                    </button>
+
+                    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                        ☰
+                    </button>
+                </div>
+
+            </div>
+        </header>
+
+        <div class="hero-grid">
+            <div>
+                <span class="eyebrow">Mount Kilimanjaro Tours</span>
+                <h1>Climbing Kilimanjaro, <em>Meru, Usambara,</em> Oldonyo-Lengai</h1>
+                <p class="lead">Experience the trekking adventures like never before with our expertly guided climbs.
+                    From the world's highest peak to hidden gems, each journey is a story of nature, challenge and
+                    triumph.</p>
+                <div class="chips">
+                    <div class="chip"><i class="fa-solid fa-user-tie"></i><span>Expert<br>guides</span></div>
+                    <div class="chip"><i class="fa-solid fa-shield-halved"></i><span>Safe &amp;<br>secure</span></div>
+                    <div class="chip"><i class="fa-solid fa-leaf"></i><span>Sustainable<br>travel</span></div>
+                </div>
+            </div>
+
+            <aside class="featured">
+                <div class="f-top"><i class="fa-solid fa-person-hiking"></i> Featured trek</div>
+                <div class="f-title">
+                    <h3>Mount Kilimanjaro</h3><span class="premium">Premium</span>
+                </div>
+                <p class="f-sub">Climbing Kilimanjaro</p>
+                <p class="f-desc"> Experience diverse
+                    landscapes, from rainforests to alpine deserts.</p>
+                <div class="f-rows">
+                    <div class="f-row"><i class="fa-regular fa-calendar-days"></i> 6 Days</div>
+                    <div class="f-row"><i class="fa-solid fa-mountain"></i> 5,895 m Summit</div>
+                    <div class="f-row"><i class="fa-solid fa-chart-simple"></i> Moderate Difficulty</div>
+                </div>
+                <button class="btn-gold">Explore Kilimanjaro <i class="fa-solid fa-arrow-right"></i></button>
+                <div class="f-script">Higher<br>than your<br>dreams</div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="routes">
+        <div class="routes-head">
+            <div>
+                <span class="section-kicker">Our Kilimanjaro routes</span>
+                <h2>Choose Your Adventure</h2>
+            </div>
+            <div class="pager">
+                <button class="pager-btn" id="prev" aria-label="Previous routes"><i
+                        class="fa-solid fa-arrow-left"></i></button>
+                <div class="pager-count" id="count"></div>
+                <button class="pager-btn" id="next" aria-label="Next routes"><i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="viewport">
+            <div class="track" id="track"></div>
+        </div>
+    </section>
+
+    <div class="strip">
+        <div class="strip-line">
+            <span class="rule"></span>
+            <i class="fa-solid fa-mountain"></i>
+            <span class="rule r"></span>
+        </div>
+        <p>Kilimanjaro · Meru · Usambara · Oldonyo-Lengai</p>
+    </div>
+
+    <div class="modal" id="bookingModal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="bookingTitle">
+        <div class="modal-card">
+
+            <!-- Intro -->
+            <aside class="booking-intro">
+                <div>
+                    <span class="eyebrow">Sangu African Safari</span>
+                    <h2 id="bookingTitle">Begin Your<br><em>Wild</em> Journey.</h2>
+                    <p>Tell us what you dream of, and our local safari specialists will create an itinerary made
+                        specifically for you.</p>
+                </div>
+
+                <ol class="booking-steps" id="introSteps">
+                    <li class="current" data-i="1"><span class="sn">01</span> Share your trip details</li>
+                    <li data-i="2"><span class="sn">02</span> Receive your tailored itinerary</li>
+                    <li data-i="3"><span class="sn">03</span> Confirm after availability check</li>
+                </ol>
+
+                <div class="trust">
+                    <i class="fa-solid fa-shield-halved"></i> Licensed local operator &middot; No payment required today
+                </div>
+            </aside>
+
+            <!-- Main -->
+            <section class="booking-main">
+                <button class="modal-close" onclick="closeBooking()" aria-label="Close booking form"><i
+                        class="fa-solid fa-xmark"></i></button>
+
+                <div id="bookingFormArea">
+                    <h3>Plan Your Safari</h3>
+                    <p class="booking-sub">Free consultation &middot; Tailor-made itinerary &middot; Reply within 24
+                        hours</p>
+
+                    <div class="progress" aria-hidden="true">
+                        <span class="on"></span><span></span><span></span>
+                    </div>
+                    <div class="progress-label"><span id="progressText">Step 1 of 3</span><span id="progressName">Trip
+                            details</span></div>
+
+                    <form id="bookingForm" novalidate>
+
+                        <!-- STEP 1 -->
+                        <div class="booking-step active" data-step="1">
+                            <div class="form-grid">
+                                <div class="field full">
+                                    <label for="safariChoice">Preferred Safari or Destination</label>
+                                    <div class="control">
+                                        <i class="fa-solid fa-map lead"></i>
+                                        <select id="safariChoice" required>
+                                            <option value="">Choose your experience</option>
+                                            <option>Serengeti &amp; Ngorongoro Discovery</option>
+                                            <option>Mount Kilimanjaro Expedition</option>
+                                            <option>Zanzibar Island Getaway</option>
+                                            <option>Maasai Culture Experience</option>
+                                            <option>Tarangire National Park Safari</option>
+                                            <option>Lake Manyara &amp; Arusha Adventure</option>
+                                            <option>Custom / Tailor-Made Safari</option>
+                                        </select>
+                                    </div>
+                                    <div class="err">Please choose an experience.</div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="arrivalDate">Preferred Arrival Date</label>
+                                    <div class="control">
+                                        <i class="fa-regular fa-calendar lead"></i>
+                                        <input id="arrivalDate" type="date" required>
+                                    </div>
+                                    <div class="err">Please pick a date from today onward.</div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="tripLength">Trip Length</label>
+                                    <div class="control">
+                                        <i class="fa-regular fa-clock lead"></i>
+                                        <select id="tripLength" required>
+                                            <option value="">Select days</option>
+                                            <option>3–4 days</option>
+                                            <option>5–7 days</option>
+                                            <option>8–10 days</option>
+                                            <option>11–14 days</option>
+                                            <option>15+ days</option>
+                                        </select>
+                                    </div>
+                                    <div class="err">Please select a trip length.</div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="adults">Adults</label>
+                                    <div class="stepper" data-target="adults">
+                                        <button type="button" data-d="-1" aria-label="Fewer adults"><i
+                                                class="fa-solid fa-minus"></i></button>
+                                        <input id="adults" type="number" min="1" max="30" value="2" required
+                                            inputmode="numeric">
+                                        <button type="button" data-d="1" aria-label="More adults"><i
+                                                class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="err">At least 1 adult is required.</div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="children">Children</label>
+                                    <div class="stepper" data-target="children">
+                                        <button type="button" data-d="-1" aria-label="Fewer children"><i
+                                                class="fa-solid fa-minus"></i></button>
+                                        <input id="children" type="number" min="0" max="20" value="0"
+                                            inputmode="numeric">
+                                        <button type="button" data-d="1" aria-label="More children"><i
+                                                class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step-actions">
+                                <span></span>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(1)">Continue <i
+                                        class="fa-solid fa-arrow-right arrow"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2 -->
+                        <div class="booking-step" data-step="2">
+                            <div class="form-grid">
+                                <div class="field full">
+                                    <label>Preferred Travel Style</label>
+                                    <div class="style-options" role="radiogroup" aria-label="Travel style">
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="Budget" checked>
+                                            <span class="card"><i class="fa-solid fa-tent"></i><b>Budget</b><small>Smart
+                                                    value</small></span>
+                                        </label>
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="Mid-Range">
+                                            <span class="card"><i
+                                                    class="fa-solid fa-car-side"></i><b>Mid-Range</b><small>Comfort
+                                                    &amp; flexibility</small></span>
+                                        </label>
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="Luxury">
+                                            <span class="card"><i
+                                                    class="fa-solid fa-gem"></i><b>Luxury</b><small>Premium
+                                                    lodges</small></span>
+                                        </label>
+                                        <label class="style-option">
+                                            <input type="radio" name="style" value="Honeymoon">
+                                            <span class="card"><i
+                                                    class="fa-solid fa-heart"></i><b>Honeymoon</b><small>Romantic
+                                                    escapes</small></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="field full">
+                                    <label for="specialRequests">Special Requests or Travel Interests</label>
+                                    <textarea id="specialRequests"
+                                        placeholder="For example: Great Migration, honeymoon, birdwatching, balloon safari, dietary needs, Zanzibar extension..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-ghost" onclick="previousStep(2)"><i
+                                        class="fa-solid fa-arrow-left"></i> Back</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Your Details <i
+                                        class="fa-solid fa-arrow-right arrow"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3 -->
+                        <div class="booking-step" data-step="3">
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label for="fullName">Full Name</label>
+                                    <div class="control">
+                                        <i class="fa-regular fa-user lead"></i>
+                                        <input id="fullName" type="text" placeholder="Your name" autocomplete="name"
+                                            required>
+                                    </div>
+                                    <div class="err">Please enter your name.</div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="email">Email Address</label>
+                                    <div class="control">
+                                        <i class="fa-regular fa-envelope lead"></i>
+                                        <input id="email" type="email" placeholder="you@email.com" autocomplete="email"
+                                            required>
+                                    </div>
+                                    <div class="err">Please enter a valid email.</div>
+                                </div>
+
+                                <div class="field full">
+                                    <label for="phone">WhatsApp / Phone Number</label>
+                                    <div class="control">
+                                        <i class="fa-brands fa-whatsapp lead"></i>
+                                        <input id="phone" type="tel" placeholder="+255 ..." autocomplete="tel" required>
+                                    </div>
+                                    <div class="err">Please enter a valid phone number (9 to 15 digits).</div>
+                                </div>
+
+                                <div class="review" id="reviewBox" aria-live="polite">
+                                    <h4>Your request at a glance</h4>
+                                    <dl id="reviewList"></dl>
+                                </div>
+                            </div>
+
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-ghost" onclick="previousStep(3)"><i
+                                        class="fa-solid fa-arrow-left"></i> Back</button>
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <span class="spinner"></span>
+                                    <span class="label-default">Send Booking Request</span>
+                                </button>
+                            </div>
+
+                            <p class="booking-note">
+                                <i class="fa-solid fa-circle-info"></i>
+                                This sends a safari enquiry, not an automatic confirmation. We confirm availability and
+                                pricing before any payment.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Success -->
+                <div class="form-success" id="formSuccess" role="status">
+                    <div class="success-ring"><i class="fa-solid fa-check"></i></div>
+                    <h3>Asante Sana!</h3>
+                    <p>Your safari enquiry is on its way. A specialist will reply within 24 hours on your email or
+                        WhatsApp.</p>
+                    <div class="ref" id="refCode">REF: SAF-000000</div>
+                    <br>
+                    <button class="btn btn-primary" onclick="closeBooking()">Close <i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+      <footer class="sf-footer">
+    <div class="sf-wrap">
+
+      <!-- Newsletter band -->
+      <div class="sf-news">
+        <div class="sf-news-text">
+          <span class="sf-kicker"><i class="fa-solid fa-envelope-open-text"></i> Travel insights</span>
+          <h3>Get safari inspiration in your inbox</h3>
+        </div>
+        <form class="sf-form" id="sfSubscribe" novalidate>
+          <i class="fa-regular fa-envelope"></i>
+          <input type="email" id="sfEmail" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <p class="sf-thanks" id="sfThanks"><i class="fa-solid fa-circle-check"></i> Thank you, you are subscribed.
+      </p>
+
+      <!-- Main grid -->
+      <div class="sf-grid">
+
+        <div>
+          <a href="#home" class="sf-brand">
+            <div class="sf-mark"><i class="fa-solid fa-compass"></i></div>
+            <div>
+              <span class="sf-brand-title">SANGU</span>
+              <span class="sf-brand-sub">African Safari</span>
+            </div>
+          </a>
+          <p class="sf-about">
+            Private Tanzania safaris, Kilimanjaro adventures and Zanzibar escapes, thoughtfully designed by
+            local experts.
+          </p>
+          <div class="sf-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+          </div>
+        </div>
+
+        <div class="sf-col">
+          <h4>Explore</h4>
+          <ul class="sf-links">
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Safari Packages</a></li>
+            <li><a href="#destinations"><i class="fa-solid fa-chevron-right"></i> Destinations</a></li>
+            <li><a href="#experiences"><i class="fa-solid fa-chevron-right"></i> Experiences</a></li>
+            <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> About Sangu</a></li>
+          </ul>
+        </div>
+
+        <div class="sf-col">
+          <h4>Popular Journeys</h4>
+          <ul class="sf-links">
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Serengeti Safari</a></li>
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Ngorongoro Safari</a></li>
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Safari &amp; Zanzibar</a></li>
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Kilimanjaro Trek</a></li>
+          </ul>
+        </div>
+
+        <div class="sf-col">
+          <h4>Contact</h4>
+          <ul class="sf-links sf-contact" style="gap:20px;">
+            <li>
+              <span class="sf-ci"><i class="fa-solid fa-location-dot"></i></span>
+              <div><small>Office</small>Arusha, Tanzania</div>
+            </li>
+            <li>
+              <span class="sf-ci"><i class="fa-solid fa-phone"></i></span>
+              <div><small>Call</small><a href="tel:+255700000000">+255 700 000 000</a></div>
+            </li>
+            <li>
+              <span class="sf-ci"><i class="fa-solid fa-envelope"></i></span>
+              <div><small>Email</small><a href="mailto:info@sanguafricansafari.com">info@sanguafricansafari.com</a>
+              </div>
+            </li>
+            <li>
+              <span class="sf-ci"><i class="fa-brands fa-whatsapp"></i></span>
+              <div>
+                <small>WhatsApp</small>
+                <a class="sf-wa" href="https://wa.me/255700000000" target="_blank" rel="noopener">Chat
+                  with us <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="sf-trust">
+        <span><i class="fa-solid fa-shield-halved"></i> Licensed &amp; insured operator</span>
+        <span><i class="fa-solid fa-user-tie"></i> Local expert guides</span>
+        <span><i class="fa-solid fa-headset"></i> Dedicated trip support</span>
+        <span><i class="fa-solid fa-lock"></i> Secure enquiries</span>
+      </div>
+      <div class="sf-bottom">
+        <span>&copy; 2026 Sangu African Safari. All rights reserved.</span>
+        <div class="sf-legal">
+          <a href="#">Privacy Policy</a><span class="dot"></span>
+          <a href="#">Terms &amp; Conditions</a><span class="dot"></span>
+          <a href="#">Cancellation Policy</a>
+          <a href="#home" class="sf-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+    <script>
+
+        const ROUTES = [
+            {
+                name: "Machame Route", img: "image/Kilimanjaro Machame Route - 07 Days _ Katikati Tours & Safaris.jpeg", badge: "Most popular", badgeIcon: "fa-crown", days: 6, level: "Moderate", pos: "50% 60%",
+                desc: "A scenic and challenging route with stunning views and diverse landscapes.", levelIcon: "fa-chart-simple"
+            },
+            {
+                name: "Marangu Route", img: "image/Marangu Route_ Climbing Kilimanjaro in 5 days.jpeg", badge: "Best for beginners", badgeIcon: "fa-seedling", days: 5, level: "Moderate", pos: "50% 40%",
+                desc: "The oldest and most established route, known for its comfortable huts and steady climb.", levelIcon: "fa-chart-simple"
+            },
+            {
+                name: "Lemosho Route", img: "image/lemosho.jpeg", badge: "Scenic & wildlife", badgeIcon: "fa-binoculars", days: 7, level: "Challenging", pos: "50% 75%",
+                desc: "A quieter, more scenic route with higher success rates and rich wildlife.", levelIcon: "fa-chart-line"
+            },
+            {
+                name: "Rongai Route", img: "image/Climb Kilimanjaro’s Rongai Route.jpeg", badge: "Quieter trail", badgeIcon: "fa-tree", days: 6, level: "Moderate", pos: "50% 30%",
+                desc: "Approaches from the drier northern side, with fewer crowds and gentle gradients.", levelIcon: "fa-chart-simple"
+            },
+            {
+                name: "Umbwe Route", img: "image/Kilimanjaro Weather_ What To Expect - Climb_.jpeg", badge: "Steepest route", badgeIcon: "fa-fire", days: 5, level: "Challenging", pos: "50% 90%",
+                desc: "The most direct and demanding path, for experienced trekkers seeking a true test.", levelIcon: "fa-chart-line"
+            }
+        ];
+
+        const track = document.getElementById("track");
+        const countEl = document.getElementById("count");
+        const prevBtn = document.getElementById("prev");
+        const nextBtn = document.getElementById("next");
+        const VISIBLE = () => window.innerWidth <= 700 ? 1 : (window.innerWidth <= 1100 ? 2 : 3);
+        let index = 0;
+        let timer;
+
+        function pad(n) { return String(n).padStart(2, "0"); }
+
+        ROUTES.forEach((r) => {
+            const card = document.createElement("article");
+            card.className = "route-card";
+            card.innerHTML = `
+        <div class="bg" style="background-image:url('${r.img}'); background-position:${r.pos};"></div>
+        <span class="r-badge"><i class="fa-solid ${r.badgeIcon}"></i> ${r.badge}</span>
+        <div class="r-body">
+          <div class="r-title"><i class="fa-solid fa-mountain"></i><h3>${r.name}</h3></div>
+          <div class="r-meta">${r.days} Days | ${r.level}</div>
+          <p class="r-desc">${r.desc}</p>
+          <div class="r-stats">
+            <div class="r-stat"><i class="fa-regular fa-calendar-days"></i>${r.days} Days</div>
+            <div class="r-stat"><i class="fa-solid fa-mountain"></i>5,895 m<br>Summit</div>
+            <div class="r-stat"><i class="fa-solid ${r.levelIcon}"></i>${r.level}<br>Difficulty</div>
+          </div>
+        </div>
+        <span class="r-go"><i class="fa-solid fa-arrow-right"></i></span>`;
+            track.appendChild(card);
+        });
+
+        const cards = [...track.children];
+
+        function maxIndex() { return Math.max(0, ROUTES.length - VISIBLE()); }
+
+        function render() {
+            const gap = 26;
+            const vp = track.parentElement.clientWidth;
+            const cardW = (vp - gap * (VISIBLE() - 1)) / VISIBLE();
+            cards.forEach(c => { c.style.flexBasis = cardW + "px"; });
+            track.style.transform = `translateX(${-index * (cardW + gap)}px)`;
+            const pages = maxIndex() + 1;
+            countEl.innerHTML = `${pad(index + 1)} <span>/ ${pad(pages)}</span>`;
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index >= maxIndex();
+        }
+
+        function go(i) {
+            index = Math.min(Math.max(0, i), maxIndex());
+            render();
+        }
+
+        function restart() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                go(index >= maxIndex() ? 0 : index + 1);
+            }, 6000);
+        }
+
+        prevBtn.addEventListener("click", () => { go(index - 1); restart(); });
+        nextBtn.addEventListener("click", () => { go(index + 1); restart(); });
+        track.parentElement.addEventListener("mouseenter", () => clearInterval(timer));
+        track.parentElement.addEventListener("mouseleave", restart);
+        window.addEventListener("resize", render);
+
+        render();
+        restart();
+
+        /* Header Scroll Effect */
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+            header.classList.toggle("scrolled", window.scrollY > 40);
+        });
+
+        /* Mobile Navigation Menu Toggle */
+        const menuToggle = document.getElementById("menuToggle");
+        const mainMenu = document.getElementById("mainMenu");
+
+        menuToggle.addEventListener("click", () => {
+            mainMenu.classList.toggle("open");
+            menuToggle.textContent = mainMenu.classList.contains("open") ? "✕" : "☰";
+        });
+
+        /* Dropdown Handler */
+        function toggleDropdown(button) {
+            const panel = button.nextElementSibling;
+            const isOpen = !panel.hidden;
+
+            // Close all active dropdowns first
+            document.querySelectorAll('.nav-dropdown-panel').forEach(p => p.hidden = true);
+            document.querySelectorAll('.nav-dropdown-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+            if (!isOpen) {
+                panel.hidden = false;
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-dropdown')) {
+                document.querySelectorAll('.nav-dropdown-panel').forEach(p => p.hidden = true);
+                document.querySelectorAll('.nav-dropdown-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+            }
+        });
+
+        /* Tabs Switcher */
+        function switchTab(evt, tabName) {
+            const panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        /* Slider Handler */
+        const slides = [
+            "image/swipe.jpg",
+            "image/manyara .jpg",
+            "image/bird manyara.jpg"
+        ];
+        let currentSlide = 0;
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            document.getElementById('activeSlideImg').src = slides[currentSlide];
+            updateDots();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            document.getElementById('activeSlideImg').src = slides[currentSlide];
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        /* Accordion Toggle for Day-by-Day Itinerary */
+        function toggleItin(element) {
+            const parentRow = element.parentElement;
+            const allRows = document.querySelectorAll('.itin-row');
+
+            allRows.forEach(row => {
+                if (row !== parentRow) {
+                    row.classList.remove('open');
+                }
+            });
+
+            parentRow.classList.toggle('open');
+        }
+
+        /* BOOKING MODAL */
+        const modal = document.getElementById("bookingModal");
+        const safariChoice = document.getElementById("safariChoice");
+        const bookingForm = document.getElementById("bookingForm");
+        const bookingFormArea = document.getElementById("bookingFormArea");
+        const formSuccess = document.getElementById("formSuccess");
+        const submitBtn = document.getElementById("submitBtn");
+        const arrivalDate = document.getElementById("arrivalDate");
+        let bookingStep = 1;
+        let lastFocus = null;
+
+        const STEP_NAMES = ["Trip details", "Travel style", "Your details"];
+
+        // Min date = today (local time)
+        (function setMinDate() {
+            const d = new Date();
+            d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+            arrivalDate.min = d.toISOString().slice(0, 10);
+        })();
+
+        // ---------- Open / close ----------
+        function openBooking(selectedSafari = "") {
+            lastFocus = document.activeElement;
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("locked");
+
+            if (selectedSafari) {
+                const match = [...safariChoice.options].find(o => o.text.toLowerCase().includes(selectedSafari.toLowerCase()));
+                safariChoice.value = match ? match.value : "Custom / Tailor-Made Safari";
+            }
+            setTimeout(() => {
+                const first = modal.querySelector('.booking-step.active input, .booking-step.active select, .booking-step.active button');
+                if (first) first.focus({ preventScroll: true });
+            }, 450);
+        }
+
+        function closeBooking() {
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("locked");
+            if (lastFocus) lastFocus.focus();
+
+            setTimeout(() => {
+                bookingFormArea.style.display = "block";
+                formSuccess.classList.remove("show");
+                bookingForm.reset();
+                clearErrors();
+                document.getElementById("children").value = 0;
+                document.getElementById("adults").value = 2;
+                submitBtn.classList.remove("loading");
+                submitBtn.disabled = false;
+                showBookingStep(1, true);
+            }, 450);
+        }
+
+        modal.addEventListener("click", e => { if (e.target === modal) closeBooking(); });
+        document.addEventListener("keydown", e => {
+            if (!modal.classList.contains("open")) return;
+            if (e.key === "Escape") closeBooking();
+            if (e.key === "Tab") trapFocus(e);
+        });
+
+        function trapFocus(e) {
+            const focusables = [...modal.querySelectorAll('.booking-step.active button, .booking-step.active input, .booking-step.active select, .booking-step.active textarea, .modal-close')]
+                .filter(el => !el.disabled && el.offsetParent !== null);
+            if (!focusables.length) return;
+            const first = focusables[0], last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+
+        // ---------- Steps ----------
+        function showBookingStep(step, instant = false) {
+            const current = document.querySelector(".booking-step.active");
+            const next = document.querySelector(`.booking-step[data-step="${step}"]`);
+            bookingStep = step;
+
+            const swap = () => {
+                document.querySelectorAll(".booking-step").forEach(el => el.classList.remove("active", "leaving"));
+                next.classList.add("active");
+                const first = next.querySelector("input, select, textarea, button:not(.modal-close)");
+                if (first && !instant) setTimeout(() => first.focus({ preventScroll: true }), 50);
+            };
+
+            if (current && current !== next && !instant) {
+                current.classList.add("leaving");
+                setTimeout(swap, 220);
+            } else {
+                swap();
+            }
+
+            // Progress bar + labels
+            document.querySelectorAll(".progress span").forEach((bar, i) => bar.classList.toggle("on", i < step));
+            document.getElementById("progressText").textContent = `Step ${step} of 3`;
+            document.getElementById("progressName").textContent = STEP_NAMES[step - 1];
+
+            // Intro checklist
+            document.querySelectorAll("#introSteps li").forEach(li => {
+                const i = Number(li.dataset.i);
+                li.classList.toggle("done", i < step);
+                li.classList.toggle("current", i === step);
+            });
+
+            if (step === 3) renderReview();
+        }
+
+        function validateStep(step) {
+            const stepEl = document.querySelector(`.booking-step[data-step="${step}"]`);
+            let firstBad = null;
+            stepEl.querySelectorAll("[required]").forEach(input => {
+                const field = input.closest(".field");
+                const ok = input.checkValidity() && !(input.type === "tel" && input.value.replace(/\D/g, "").length < 9);
+                field.classList.toggle("invalid", !ok);
+                if (!ok && !firstBad) firstBad = input;
+            });
+            if (firstBad) firstBad.focus();
+            return !firstBad;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll(".field.invalid").forEach(f => f.classList.remove("invalid"));
+        }
+
+        function nextStep(current) {
+            clearErrors();
+            if (!validateStep(current)) return;
+            showBookingStep(current + 1);
+        }
+
+        function previousStep(current) {
+            clearErrors();
+            showBookingStep(current - 1);
+        }
+
+        // Clear error state as the user types
+        document.querySelectorAll("#bookingForm [required]").forEach(input => {
+            input.addEventListener("input", () => {
+                if (input.checkValidity()) input.closest(".field").classList.remove("invalid");
+            });
+        });
+
+        // ---------- Steppers ----------
+        document.querySelectorAll(".stepper").forEach(stepper => {
+            const input = stepper.querySelector("input");
+            stepper.querySelectorAll("button").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const min = Number(input.min), max = Number(input.max);
+                    const val = Math.min(max, Math.max(min, Number(input.value || 0) + Number(btn.dataset.d)));
+                    input.value = val;
+                    input.dispatchEvent(new Event("input"));
+                });
+            });
+        });
+
+        // ---------- Review ----------
+        function renderReview() {
+            const style = bookingForm.querySelector('input[name="style"]:checked')?.value || "—";
+            const date = arrivalDate.value ? new Date(arrivalDate.value).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "—";
+            const rows = [
+                ["Experience", safariChoice.value || "—"],
+                ["Arrival", date],
+                ["Length", document.getElementById("tripLength").value || "—"],
+                ["Travellers", `${document.getElementById("adults").value} adult(s), ${document.getElementById("children").value} child(ren)`],
+                ["Style", style],
+                ["Name", document.getElementById("fullName").value || "—"]
+            ];
+            document.getElementById("reviewList").innerHTML = rows
+                .map(([k, v]) => `<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("");
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        }
+
+        // ---------- Submit ----------
+        bookingForm.addEventListener("submit", e => {
+            e.preventDefault();
+            clearErrors();
+            if (!validateStep(3)) return;
+
+            submitBtn.classList.add("loading");
+            submitBtn.disabled = true;
+
+            // TODO: replace this simulated delay with your real request
+            // (Formspree, EmailJS, WhatsApp API or your backend).
+            setTimeout(() => {
+                const ref = "SAF-" + Math.floor(100000 + Math.random() * 900000);
+                document.getElementById("refCode").textContent = "REF: " + ref;
+                bookingFormArea.style.display = "none";
+                formSuccess.classList.add("show");
+                submitBtn.classList.remove("loading");
+                submitBtn.disabled = false;
+            }, 1400);
+        });
+
+
+
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/69a0649c9825341c37479e3f/1k53341hq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,4529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangu African Safari | Safaris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --green: #3f5b2c;
+      --green-2: #56703d;
+      --green-dark: #2b3f1d;
+      --cream: #faf6ec;
+      --panel: #f6f1e4;
+      --line: #e4dccb;
+      --ink: #26241c;
+      --muted: #6f6a5a;
+      --gold: #c9a24d;
+      --gold-dark: #a88336;
+      --red: #c64b2b;
+      --olive: #6d7f3b;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, sans-serif;
+      background: #fbf9f3;
+      color: var(--ink);
+      font-size: 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-inner {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 14px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-dark);
+    }
+
+    .logo-title {
+      font: 700 19px "Playfair Display", serif;
+      letter-spacing: .14em;
+      color: var(--green-dark);
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-size: 9px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-top: 5px;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #4a4a3e;
+    }
+
+    .nav a.active {
+      color: var(--green);
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 4px;
+    }
+
+    .book-btn {
+      background: var(--green);
+      color: #fff;
+      border: 0;
+      border-radius: 30px;
+      padding: 12px 22px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background .3s, transform .3s var(--ease);
+    }
+
+    .book-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Page layout ---------- */
+    .page {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 34px 36px 80px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .filters {
+      position: sticky;
+      top: 100px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 24px 26px;
+      background-image: radial-gradient(circle at 100% 0%, rgba(201, 162, 77, .07), transparent 40%);
+    }
+
+    .filters h2 {
+      font: 700 22px "Playfair Display", serif;
+      margin: 0 0 6px;
+      color: var(--ink);
+    }
+
+    .filters .lead {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 22px;
+    }
+
+    .f-block {
+      padding: 20px 0;
+      border-top: 1px solid #e3dbc8;
+    }
+
+    .f-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 15.5px;
+      color: var(--ink);
+      margin: 0 0 12px;
+    }
+
+    .f-title i {
+      font-size: 17px;
+      color: var(--green);
+      width: 22px;
+      text-align: center;
+    }
+
+    .f-title i.gold {
+      color: var(--gold-dark);
+    }
+
+    .check {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+      cursor: pointer;
+      font-size: 14.5px;
+      color: #3a382e;
+      user-select: none;
+    }
+
+    .check input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .box {
+      width: 19px;
+      height: 19px;
+      border: 1.5px solid #b9b19c;
+      border-radius: 4px;
+      background: #fff;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .25s var(--ease);
+    }
+
+    .box i {
+      font-size: 11px;
+      color: #fff;
+      opacity: 0;
+      transform: scale(.4);
+      transition: .25s var(--ease);
+    }
+
+    .check input:checked+.box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .check input:checked+.box i {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .check:hover .box {
+      border-color: var(--green);
+    }
+
+    .check input:focus-visible+.box {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap select {
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 12px 40px 12px 14px;
+      border: 1px solid #d8cfba;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 14.5px;
+      cursor: pointer;
+    }
+
+    .select-wrap select:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(63, 91, 44, .12);
+    }
+
+    .select-wrap::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 11px;
+      color: #8d8673;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .range {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 5px;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--gold) var(--fill, 100%), #e3dccb var(--fill, 100%));
+      outline: none;
+      cursor: pointer;
+    }
+
+    .range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold-dark);
+      border: 3px solid #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+      cursor: pointer;
+    }
+
+    .range::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gold-dark);
+      border: 3px solid #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+      cursor: pointer;
+    }
+
+    .btn-search {
+      width: 100%;
+      margin-top: 12px;
+      padding: 16px;
+      border: 0;
+      border-radius: 40px;
+      cursor: pointer;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background .3s, transform .3s var(--ease), box-shadow .3s;
+    }
+
+    .btn-search:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px -12px rgba(43, 63, 29, .7);
+    }
+
+    .btn-reset {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* ---------- Results ---------- */
+    .results-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .count {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--ink);
+    }
+
+    .sort {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .sort select {
+      border: 1px solid #d8cfba;
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .sort select:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* ---------- Trip card ---------- */
+    .trip {
+      position: relative;
+      display: grid;
+      grid-template-columns: 46% 1fr;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 300px;
+      animation: tripIn .6s var(--ease) both;
+      transition: transform .4s var(--ease), box-shadow .4s;
+    }
+
+    .trip:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 40px -28px rgba(40, 36, 20, .5);
+    }
+
+    @keyframes tripIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .trip-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .trip-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+
+    .trip:hover .trip-img img {
+      transform: scale(1.04);
+    }
+
+    .heart {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 3;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 0;
+      background: #fff;
+      color: var(--ink);
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px -6px rgba(0, 0, 0, .35);
+      transition: transform .3s var(--ease), color .3s;
+    }
+
+    .heart:hover {
+      transform: scale(1.08);
+    }
+
+    .heart.on {
+      color: var(--red);
+    }
+
+    .heart.on i::before {
+      content: "\f004";
+      font-weight: 900;
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 30px;
+      padding: 9px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 18px -10px rgba(0, 0, 0, .4);
+    }
+
+    .badge i {
+      color: var(--gold-dark);
+      font-size: 14px;
+    }
+
+    .icon-bar {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(246, 241, 228, .94);
+      border-radius: 40px;
+      padding: 7px 10px;
+      backdrop-filter: blur(4px);
+    }
+
+    .icon-bar .ic {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green-2);
+      color: #f3e7bd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .icon-bar .plus {
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 0 2px;
+    }
+
+    .trip-body {
+      position: relative;
+      padding: 30px 34px 28px 34px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ribbon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      width: 210px;
+      min-height: 126px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px 20px 18px 56px;
+      background: var(--red);
+      clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%, 0 84%, 9% 73%, 3% 60%, 14% 48%, 5% 34%, 18% 22%, 10% 10%);
+    }
+
+    .ribbon,
+    .ribbon.green,
+    .ribbon.gold {
+      width: 200px;
+      min-height: 160px;
+      padding: 40px 16px 48px 48px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      border: none;
+      border-radius: 0;
+
+      color: #fff;
+      text-align: center;
+
+      /* Rough curved edge — similar to your reference */
+      clip-path: polygon(0% 0%,
+          100% 0%,
+          100% 100%,
+
+          91% 99%,
+          85% 99%,
+          80% 98%,
+          75% 98%,
+          71% 96%,
+          76% 97%,
+          68% 94%,
+
+          64% 94%,
+          60% 91%,
+          57% 92%,
+          53% 88%,
+          50% 89%,
+
+          46% 85%,
+          43% 86%,
+          40% 81%,
+          37% 83%,
+          34% 78%,
+          32% 80%,
+
+          28% 74%,
+          27% 77%,
+          23% 72%,
+          20% 73%,
+          17% 69%,
+
+          15% 63%,
+          13% 60%,
+          14% 58%,
+          11% 53%,
+          12% 50%,
+          9% 44%,
+
+          8% 37%,
+          7% 33%,
+          7% 25%,
+          6% 20%,
+          6% 11%,
+          5% 8%,
+          6% 8%,
+          3% 4%);
+    }
+
+    /* Rangi ya mfano wako */
+    .ribbon {
+      background: var(--green);
+    }
+
+    .ribbon.green {
+      background: var(--green);
+    }
+
+    .ribbon.gold {
+      background: var(--green);
+    }
+
+    /* Ribbon text */
+    .ribbon .ribbon-label {
+      display: block;
+      margin-bottom: 4px;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ribbon .ribbon-price {
+      display: block;
+      white-space: nowrap;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .ribbon .ribbon-price small {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .ribbon.green {
+      background: var(--green);
+    }
+
+    .ribbon.gold {
+      background: var(--green);
+    }
+
+    .ribbon .from {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .ribbon .amt {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-top: 2px;
+    }
+
+    .ribbon .per {
+      font-size: 13px;
+      font-weight: 500;
+      opacity: .95;
+    }
+
+    .cat {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    .cat::after {
+      content: "";
+      width: 56px;
+      height: 1.5px;
+      background: var(--gold);
+    }
+
+    .trip-title {
+      font: 700 25px "Playfair Display", serif;
+      text-transform: uppercase;
+      letter-spacing: .01em;
+      line-height: 1.22;
+      color: var(--ink);
+      margin: 14px 0 16px;
+      max-width: calc(100% - 200px);
+    }
+
+    .trip-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: #3a382e;
+    }
+
+    .trip-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 7px;
+      line-height: 1.45;
+    }
+
+    .trip-list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green-2);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .trip-list .route-item {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .trip-list .route-item .chev {
+      color: var(--green-2);
+      font-size: 11px;
+      margin: 0 6px;
+    }
+
+    .btn-trip {
+      margin-top: auto;
+      align-self: flex-end;
+      background: var(--green);
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+      border-radius: 40px;
+      padding: 15px 28px;
+      font-weight: 800;
+      font-size: 13.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: background .3s, transform .3s var(--ease), box-shadow .3s;
+    }
+
+    .btn-trip:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px -12px rgba(43, 63, 29, .7);
+    }
+
+    .btn-trip i {
+      font-size: 13px;
+      transition: transform .3s var(--ease);
+    }
+
+    .btn-trip:hover i {
+      transform: translateX(4px);
+    }
+
+    .trip-body .trip-foot {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 18px;
+    }
+
+    .trip-body .btn-trip {
+      margin-top: 0;
+    }
+
+    /* Luxury & honeymoon: premium gold edge */
+    .trip.is-premium {
+      border-color: #c9a24d;
+      box-shadow: 0 0 0 4px #fbf9f3, 0 0 0 5px rgba(201, 162, 77, .45);
+    }
+
+    .trip.is-premium .badge {
+      background: linear-gradient(135deg, #ecd28f, #c9a24d);
+      color: #1d1a10;
+    }
+
+    .trip.is-premium .badge i {
+      color: #1d1a10;
+    }
+
+    .empty {
+      background: #fff;
+      border: 1px dashed #d8cdb6;
+      border-radius: 14px;
+      padding: 56px 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty i {
+      font-size: 32px;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .empty h4 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    /* ---------- Pagination ---------- */
+    .pager {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .pg {
+      min-width: 46px;
+      height: 46px;
+      padding: 0 16px;
+      border-radius: 50%;
+      border: 1px solid #d8cfba;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: .3s var(--ease);
+    }
+
+    .pg:hover:not(:disabled) {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .pg.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+      box-shadow: 0 10px 20px -10px rgba(43, 63, 29, .7);
+    }
+
+    .pg:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    .pg.nav-pg {
+      border-radius: 30px;
+      padding: 0 18px;
+      font-size: 14px;
+    }
+
+    .pager-info {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* =========================================
+   MOBILE: PRICE RIBBON + BUTTON SAME ROW
+========================================= */
+
+    @media (max-width: 600px) {
+
+      /* Allow the price and button to share the last row */
+      .trip .trip-body {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px 12px;
+
+        padding: 24px 18px 20px;
+      }
+
+      /* Other content stays full-width */
+      .trip .trip-body>* {
+        flex: 0 0 100%;
+        min-width: 0;
+      }
+
+      .trip .trip-body .trip-title {
+        max-width: none;
+        margin: 0;
+        font-size: 21px;
+        line-height: 1.3;
+      }
+
+      .trip .trip-body .trip-list {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      /* Smaller ribbon — no longer absolute */
+      .trip .trip-body>.ribbon,
+      .trip .trip-body>.ribbon.green,
+      .trip .trip-body>.ribbon.gold {
+        position: relative;
+        inset: auto;
+        order: 10;
+
+        flex: 0 0 136px;
+        width: 136px;
+        min-height: 112px;
+        margin: 0;
+        padding: 23px 8px 30px 30px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        align-self: center;
+        text-align: center;
+      }
+
+      /* Supports your existing text classes */
+      .trip .ribbon .from,
+      .trip .ribbon .ribbon-label {
+        margin: 0 0 3px;
+        font-size: 10px;
+        line-height: 1.2;
+        letter-spacing: 0.04em;
+      }
+
+      .trip .ribbon .amt,
+      .trip .ribbon .ribbon-price {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 800;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .trip .ribbon .per,
+      .trip .ribbon .ribbon-price small {
+        margin-top: 3px;
+        font-size: 10px;
+        line-height: 1.25;
+      }
+
+      /* Button container — right side of ribbon */
+      .trip .trip-body>.trip-foot {
+        order: 11;
+        flex: 1 1 0;
+        min-width: 0;
+        align-self: center;
+
+        display: flex;
+        justify-content: flex-end;
+
+        margin: 0;
+        padding: 0;
+      }
+
+      .trip .trip-body .trip-foot .btn-trip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+
+        width: 100%;
+        min-height: 48px;
+        margin: 0;
+        padding: 12px 10px;
+
+        border-radius: 999px;
+        font-size: 10px;
+        line-height: 1.4;
+        letter-spacing: 0.04em;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .trip .trip-body .trip-foot .btn-trip i {
+        flex-shrink: 0;
+        font-size: 11px;
+      }
+    }
+
+    /* Extra-small phones */
+    @media (max-width: 360px) {
+
+      .trip .trip-body {
+        gap: 18px 8px;
+        padding-inline: 14px;
+      }
+
+      .trip .trip-body>.ribbon,
+      .trip .trip-body>.ribbon.green,
+      .trip .trip-body>.ribbon.gold {
+        flex-basis: 116px;
+        width: 116px;
+        min-height: 100px;
+        padding: 20px 6px 27px 26px;
+      }
+
+      .trip .ribbon .amt,
+      .trip .ribbon .ribbon-price {
+        font-size: 16px;
+      }
+
+      .trip .trip-body .trip-foot .btn-trip {
+        padding-inline: 8px;
+        font-size: 9px;
+      }
+    }
+
+    /* =========================================
+   SEARCH + RESET
+========================================= */
+
+    .filter-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 14px;
+
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line, #e3dccd);
+    }
+
+    .filter-actions .btn-search-safari,
+    .filter-actions .btn-reset-safari {
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      min-width: 0;
+      min-height: 50px;
+      margin: 0;
+      padding: 14px 20px;
+
+      border: 1px solid transparent;
+      border-radius: 10px;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      cursor: pointer;
+
+      transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+    }
+
+    /* Main action */
+    .filter-actions .btn-search-safari {
+      flex: 1 1 170px;
+      background: var(--green, #244b37);
+      border-color: var(--green, #244b37);
+      color: #fff;
+    }
+
+    .filter-actions .btn-search-safari:hover {
+      background: var(--green-dark, #173526);
+      border-color: var(--green-dark, #173526);
+    }
+
+    /* Secondary action */
+    .filter-actions .btn-reset-safari {
+      flex: 1 1 100px;
+      background: #faf7ef;
+      border-color: #d9cfba;
+      color: #665a43;
+    }
+
+    .filter-actions .btn-reset-safari:hover {
+      background: #eee6d6;
+      border-color: #bba579;
+      color: #3d3528;
+    }
+
+    .filter-actions i {
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    /* =========================================
+   PAGINATION
+========================================= */
+
+    .pager {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+
+      margin-top: 44px;
+      padding: 24px 8px 0;
+      border-top: 1px solid var(--line, #e3dccd);
+    }
+
+    .pager .pg {
+      box-sizing: border-box;
+      flex: 0 0 auto;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      min-width: 48px;
+      height: 48px;
+      margin: 0;
+      padding: 0 14px;
+
+      border: 1px solid #ded5c2;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ink, #25382c);
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+
+      transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pager .pg:hover:not(:disabled) {
+      background: #f5f1e7;
+      border-color: var(--green, #244b37);
+      color: var(--green, #244b37);
+      transform: none;
+    }
+
+    .pager .pg.active {
+      background: var(--green, #244b37);
+      border-color: var(--green, #244b37);
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(36, 75, 55, 0.16);
+    }
+
+    .pager .pg.nav-pg {
+      min-width: 100px;
+      padding-inline: 18px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .pager .pg:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .pager-info {
+      margin: 18px 0 0;
+      color: var(--muted, #77796f);
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Keyboard focus */
+    .filter-actions button:focus-visible,
+    .pager .pg:focus-visible {
+      outline: 3px solid #c6a15b;
+      outline-offset: 4px;
+    }
+
+    /* =========================================
+   FIX FOR BUTTONS & PAGINATION OVERLAP
+========================================= */
+
+    /* 1. Hakikisha vifungo vya filter vinatengeneza block yao yenyewe */
+    .btn-row {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      width: 100% !important;
+      margin-top: 24px !important;
+      margin-bottom: 24px !important;
+      position: relative !important;
+      top: auto !important;
+      bottom: auto !important;
+    }
+
+    .btn-row .btn-search,
+    .btn-row .btn-reset {
+      position: relative !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      width: 100% !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+
+    /* 2. Hakikisha Pager (1, 2, Prev, Next) inakaa peke yake chini kabisa */
+    .pager {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+      margin-top: 50px !important;
+      padding-top: 20px !important;
+      clear: both !important;
+      position: relative !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      transform: none !important;
+    }
+
+    @media (max-width: 600px) {
+      .btn-row {
+        gap: 10px !important;
+      }
+
+      .pager .pg {
+        min-width: 40px;
+        height: 40px;
+        font-size: 13px;
+      }
+
+      .pager .pg.nav-pg {
+        min-width: 75px;
+        font-size: 12px;
+      }
+    }
+  </style>
+  <style id="explorer-v4">
+    /* ----- Layout: sidebar flush to the left edge, wider filter and cards ----- */
+    .page {
+      max-width: none;
+      padding: 30px 140px 80px 60px;
+      /* 60px = nafasi ya kushoto, 140px = nafasi ya kulia */
+      grid-template-columns: 360px 1fr;
+      gap: 36px;
+    }
+
+    /* ----- Filters: no box, normal list ----- */
+    .filters {
+      position: sticky;
+      top: 100px;
+      background: none;
+      border: 0;
+      box-shadow: none;
+      padding: 8px 0 0 28px;
+      border-radius: 0;
+      background-image: none;
+    }
+
+    .filters h2 {
+      font-size: 26px;
+    }
+
+    .f-block {
+      border-top: 1px solid #e3dbc8;
+    }
+
+    /* Search and Reset side by side */
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn-row .btn-search {
+      margin-top: 0;
+      flex: 1;
+      padding: 15px 12px;
+      font-size: 15px;
+    }
+
+    .btn-row .btn-reset {
+      margin-top: 0;
+      flex: 1;
+      padding: 14px 12px;
+      border: 1px solid #cfc5ad;
+      border-radius: 40px;
+      background: #fff;
+      color: var(--green);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-row .btn-reset:hover {
+      border-color: var(--green);
+    }
+
+    /* ----- Cards: wider, leave a little space on the right ----- */
+    .trip {
+      grid-template-columns: 48% 1fr;
+      min-height: 340px;
+    }
+
+    .trip-img {
+      min-height: 340px;
+    }
+
+    .trip-body {
+      padding: 34px 40px 30px 40px;
+    }
+
+    .trip-title {
+      font-size: 27px;
+      max-width: calc(100% - 210px);
+    }
+
+    .trip-list {
+      font-size: 16px;
+    }
+
+    .route-item {
+      font-size: 15.5px;
+    }
+
+    /* Location tag sits where the icon bar was */
+    .loc-chip {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 3;
+      background: rgba(250, 246, 236, .96);
+      color: var(--ink);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .01em;
+      box-shadow: 0 8px 18px -10px rgba(0, 0, 0, .4);
+    }
+
+    .badge {
+      font-size: 14.5px;
+    }
+
+    @media (max-width: 1200px) {
+      .page {
+        grid-template-columns: 300px 1fr;
+        padding-right: 36px;
+      }
+
+      .trip {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-img {
+        min-height: 320px;
+      }
+
+      .trip-title {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+        padding: 22px 18px 60px;
+      }
+
+      .filters {
+        padding: 0;
+      }
+    }
+
+
+    #header {
+      --nav-gold: #c6a15b;
+      --nav-gold-light: #ead4a3;
+      --nav-forest: #0c1c15;
+
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+
+      height: 180px;
+      padding: 0;
+
+      background: rgba(4, 12, 10, 0.16);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      transition:
+        height 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    #header,
+    #header * {
+      box-sizing: border-box;
+    }
+
+    #header.scrolled {
+      height: 90px;
+      padding: 0;
+      background: rgba(4, 12, 10, 0.97);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    #header .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      width: min(1440px, calc(100% - 64px));
+      height: 100%;
+      min-height: 0;
+      margin-inline: auto;
+    }
+
+    /* Brand */
+
+    #header .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 11px;
+      min-width: 0;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    #header .brand-mark {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+
+      width: 49px;
+      height: 49px;
+      border: 1px solid var(--nav-gold);
+      border-radius: 50%;
+
+      color: var(--nav-gold-light);
+      font-size: 1.8rem;
+    }
+
+    #header .brand-title {
+      color: var(--nav-gold-light);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.65rem;
+      line-height: 1;
+      letter-spacing: 0.16em;
+    }
+
+    #header .brand-subtitle {
+      margin-top: 7px;
+      color: rgba(255, 255, 255, 0.74);
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.29em;
+      text-transform: uppercase;
+    }
+
+    /* Top-level navigation */
+
+    #header .desktop-menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(17px, 1.8vw, 29px);
+    }
+
+    #header .nav-link,
+    #header .nav-dropdown-trigger {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+
+      margin: 0;
+      padding: 13px 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+
+      color: rgba(255, 255, 255, 0.88);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.30rem;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #header .nav-link::after,
+    #header .nav-dropdown-trigger::after {
+      content: "";
+      position: absolute;
+      right: auto;
+      bottom: 5px;
+      left: 0;
+
+      width: 0;
+      height: 1px;
+      background: var(--nav-gold);
+
+      transition: width 0.25s ease;
+    }
+
+    #header .nav-link:hover,
+    #header .nav-dropdown-trigger:hover,
+    #header .nav-dropdown-trigger[aria-expanded="true"] {
+      color: var(--nav-gold-light);
+    }
+
+    #header .nav-link:hover::after,
+    #header .nav-link.active::after,
+    #header .nav-dropdown-trigger[aria-expanded="true"]::after {
+      width: 100%;
+    }
+
+    /* =========================================
+   DROPDOWNS
+========================================= */
+
+    #header .nav-dropdown {
+      position: relative;
+    }
+
+    #header .nav-dropdown-panel {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: -24px;
+      z-index: 110;
+
+      width: 370px;
+      overflow: hidden;
+
+      background: #fbf8f1;
+      border: 1px solid rgba(198, 161, 91, 0.35);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Keep closed content hidden, including keyboard focus */
+
+    #header .nav-dropdown-panel[hidden] {
+      display: none;
+    }
+
+    #header .dropdown-heading {
+      padding: 24px 25px 20px;
+      border-bottom: 1px solid rgba(198, 161, 91, 0.2);
+      background: #f2ecdf;
+    }
+
+    #header .dropdown-eyebrow {
+      display: block;
+      margin-bottom: 9px;
+      color: #95713a;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    #header .dropdown-heading h3 {
+      margin: 0;
+      color: #20392b;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    #header .dropdown-links {
+      display: grid;
+      gap: 3px;
+      margin: 0;
+      padding: 12px;
+      list-style: none;
+    }
+
+    #header .dropdown-links li {
+      margin: 0;
+      padding: 0;
+    }
+
+    #header .dropdown-links a,
+    #header .dropdown-booking {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 12px 13px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: #233b2d;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+
+      transition: background-color 0.2s ease;
+    }
+
+    /* Reset old broad navigation underline rules */
+
+    #header .dropdown-links a::after,
+    #header .dropdown-footer::after {
+      content: none;
+    }
+
+    #header .dropdown-links a:hover,
+    #header .dropdown-booking:hover {
+      background: #eee7d9;
+    }
+
+    #header .dropdown-links span {
+      display: block;
+      color: #233b2d;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    #header .dropdown-links small {
+      display: block;
+      margin-top: 4px;
+      color: #74796e;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.72rem;
+      line-height: 1.5;
+    }
+
+    #header .dropdown-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      padding: 17px 25px;
+      border-top: 1px solid rgba(198, 161, 91, 0.2);
+
+      background: #f2ecdf;
+      color: #80602d;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    #header .dropdown-footer:hover {
+      background: #eae1ce;
+    }
+
+    /* =========================================
+   NAV ACTIONS
+========================================= */
+
+    #header .nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    #header .search-icon {
+      padding: 4px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    #header .book-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      min-height: 48px;
+      padding: 13px 22px;
+      border: 1px solid var(--nav-gold);
+      border-radius: 999px;
+      background: transparent;
+
+      color: var(--nav-gold-light);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1rem;
+      white-space: nowrap;
+      cursor: pointer;
+
+      transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+    }
+
+    #header .book-button i {
+      font-size: 0.85rem;
+    }
+
+    #header .book-button:hover {
+      background: var(--nav-gold);
+      color: #0c1c15;
+    }
+
+    #header .menu-toggle {
+      display: none;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(198, 161, 91, 0.4);
+      border-radius: 8px;
+      background: transparent;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    #header button:focus-visible,
+    #header a:focus-visible {
+      outline: 2px solid var(--nav-gold);
+      outline-offset: 5px;
+    }
+
+    /* =========================================
+   MOBILE / TABLET
+========================================= */
+
+    @media (max-width: 1200px) {
+
+      #header,
+      #header.scrolled {
+        height: 86px;
+      }
+
+      #header .nav {
+        width: calc(100% - 36px);
+        gap: 16px;
+      }
+
+      #header .menu-toggle {
+        display: grid;
+      }
+
+      #header .desktop-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+
+        max-height: calc(100dvh - 86px);
+        overflow-y: auto;
+        padding: 18px;
+
+        background: #0c1c15;
+        border-top: 1px solid rgba(198, 161, 91, 0.2);
+        box-shadow: 0 18px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      #header .desktop-menu.mobile-open {
+        display: flex;
+      }
+
+      #header .nav-link,
+      #header .nav-dropdown-trigger {
+        display: flex;
+        width: 100%;
+        padding: 16px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 1.1rem;
+        text-align: left;
+      }
+
+      #header .nav-link::after,
+      #header .nav-dropdown-trigger::after {
+        content: none;
+      }
+
+      #header .nav-link.active,
+      #header .nav-dropdown-trigger[aria-expanded="true"] {
+        color: var(--nav-gold-light);
+      }
+
+      #header .nav-dropdown-panel {
+        position: static;
+        width: 100%;
+        margin: 8px 0 14px;
+        border-radius: 10px;
+        box-shadow: none;
+      }
+
+      #header .dropdown-heading {
+        padding: 20px;
+      }
+
+      #header .dropdown-links {
+        padding: 9px;
+      }
+
+      #header .dropdown-footer {
+        padding: 17px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #header .nav {
+        width: calc(100% - 28px);
+        gap: 10px;
+      }
+
+      #header .brand {
+        gap: 8px;
+      }
+
+      #header .brand-mark {
+        width: 40px;
+        height: 40px;
+        font-size: 1.45rem;
+      }
+
+      #header .brand-title {
+        font-size: 1.25rem;
+      }
+
+      #header .brand-subtitle {
+        font-size: 0.4rem;
+        letter-spacing: 0.2em;
+      }
+
+      #header .nav-actions {
+        gap: 9px;
+      }
+
+      #header .search-icon {
+        display: none;
+      }
+
+      #header .book-button {
+        min-height: 40px;
+        padding: 10px 13px;
+        font-size: 0.84rem;
+      }
+
+      #header .book-button i {
+        display: none;
+      }
+    }
+
+    @media (max-width: 360px) {
+      #header .brand-mark {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      #header,
+      #header * {
+        transition: none !important;
+      }
+    }
+  </style>
+  <style id="safaris-hero">
+    .sx-hero {
+      position: relative;
+      min-height: clamp(580px, 150vh, 1000px);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: #0d1815;
+      color: #fff;
+    }
+
+    .sx-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .sx-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.12);
+      animation: sxFade 36s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+
+    .sx-slide:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .sx-slide:nth-child(2) {
+      animation-delay: 6s;
+    }
+
+    .sx-slide:nth-child(3) {
+      animation-delay: 12s;
+    }
+
+    .sx-slide:nth-child(4) {
+      animation-delay: 18s;
+    }
+
+    .sx-slide:nth-child(5) {
+      animation-delay: 24s;
+    }
+
+    .sx-slide:nth-child(6) {
+      animation-delay: 30s;
+    }
+
+    @keyframes sxFade {
+      0% {
+        opacity: 0;
+        transform: scale(1.12);
+      }
+
+      4% {
+        opacity: 1;
+      }
+
+      18% {
+        opacity: 1;
+        transform: scale(1.0);
+      }
+
+      22% {
+        opacity: 0;
+        transform: scale(1.0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(1.12);
+      }
+    }
+
+    .sx-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(10, 18, 14, .88) 0%, rgba(10, 18, 14, .6) 42%, rgba(10, 18, 14, .2) 100%),
+        linear-gradient(180deg, rgba(10, 18, 14, 0) 78%, #fbf9f3 100%);
+    }
+
+    .sx-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 110px clamp(36px, 4vw, 70px) 120px clamp(28px, 3vw, 60px);
+    }
+
+    .sx-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: #ecd28f;
+    }
+
+    .sx-eyebrow::before,
+    .sx-eyebrow::after {
+      content: "";
+      width: 56px;
+      height: 1px;
+      background: #c9a24d;
+    }
+
+    .sx-content h1 {
+      font: 700 clamp(5.6rem, 6vw, 5.4rem)/1.06 "Playfair Display", serif;
+      color: #fff;
+      margin: 24px 0 22px;
+    }
+
+    .sx-content h1 span {
+      color: #ecd28f;
+      font-style: italic;
+    }
+
+    .sx-content p {
+      font-size: clamp(16px, 1.3vw, 19px);
+      line-height: 1.75;
+      color: rgba(255, 255, 255, .84);
+      max-width: 640px;
+      margin: 0 0 36px;
+    }
+
+    .sx-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px 40px;
+    }
+
+    .sx-chip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sx-chip-ic {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(236, 210, 143, .5);
+      background: rgba(255, 255, 255, .08);
+      color: #ecd28f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .sx-chip b {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .sx-chip small {
+      display: block;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, .72);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 760px) {
+      .sx-overlay {
+        background:
+          linear-gradient(180deg, rgba(10, 18, 14, .85) 0%, rgba(10, 18, 14, .7) 60%, rgba(10, 18, 14, .3) 100%),
+          linear-gradient(180deg, rgba(10, 18, 14, 0) 80%, #fbf9f3 100%);
+      }
+
+      .sx-content {
+        padding: 130px 20px 80px 20px;
+      }
+
+      /* Kurekebisha ukubwa wa kichwa cha habari kusomeka vizuri kwenye simu */
+      .sx-content h1 {
+        font-size: 2.7rem;
+        line-height: 1.15;
+        margin: 16px 0 16px;
+      }
+
+      .sx-content p {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .sx-eyebrow {
+        font-size: 12px;
+        letter-spacing: .2em;
+      }
+
+      .sx-eyebrow::before,
+      .sx-eyebrow::after {
+        width: 30px;
+      }
+
+      .sx-chips {
+        gap: 16px 20px;
+      }
+
+      .sx-chip b {
+        font-size: 18px;
+      }
+
+      .sx-chip small {
+        font-size: 12px;
+      }
+
+      .sx-chip-ic {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sx-slide {
+        animation: none;
+        opacity: 0;
+      }
+
+      .sx-slide:nth-child(1) {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    /* ===== Premium footer (scoped with .sf-) ===== */
+    .sf-footer {
+      position: relative;
+      background:
+        radial-gradient(900px 300px at 10% 0%, rgba(235, 184, 41, .08), transparent 60%),
+        radial-gradient(700px 280px at 100% 100%, rgba(131, 191, 79, .06), transparent 60%),
+        linear-gradient(180deg, #0c1a12 0%, #070e0a 100%);
+      color: #b9c2bc;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    .sf-footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #EBB829, transparent);
+    }
+
+    .sf-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top: newsletter band */
+    .sf-news {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 56px 0 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .sf-news-text .sf-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #EBB829;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .sf-news-text h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: #fff;
+      font-weight: 700;
+      font-size: 28px;
+      margin-top: 10px;
+      line-height: 1.2;
+    }
+
+    .sf-form {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 999px;
+      padding: 5px;
+      min-width: min(100%, 420px);
+      transition: border-color .3s, box-shadow .3s;
+    }
+
+    .sf-form:focus-within {
+      border-color: #EBB829;
+      box-shadow: 0 0 0 4px rgba(235, 184, 41, .15);
+    }
+
+    .sf-form i {
+      color: #7d8a82;
+      margin: 0 12px 0 16px;
+    }
+
+    .sf-form input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: #fff;
+      font: inherit;
+      padding: 12px 0;
+      min-width: 0;
+    }
+
+    .sf-form input::placeholder {
+      color: #6f7b74;
+    }
+
+    .sf-form button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font: inherit;
+      font-weight: 600;
+      color: #14200f;
+      background: linear-gradient(135deg, #f6d365, #EBB829 55%, #c99a1a);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .sf-form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px -6px rgba(235, 184, 41, .55);
+    }
+
+    .sf-thanks {
+      display: none;
+      color: #83BF4F;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    /* Main grid */
+    .sf-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.1fr 1.2fr;
+      gap: 48px;
+      padding: 56px 0 44px;
+    }
+
+    .sf-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .sf-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, rgba(235, 184, 41, .18), rgba(235, 184, 41, .04));
+      border: 1px solid rgba(235, 184, 41, .45);
+      color: #EBB829;
+      font-size: 22px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 10px 30px -10px rgba(235, 184, 41, .4);
+    }
+
+    .sf-brand-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      color: #fff;
+      font-size: 24px;
+      letter-spacing: .14em;
+      line-height: 1;
+    }
+
+    .sf-brand-sub {
+      display: block;
+      margin-top: 7px;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: #EBB829;
+    }
+
+    .sf-about {
+      margin-top: 22px;
+      line-height: 1.8;
+      max-width: 320px;
+      color: #9aa59f;
+    }
+
+    .sf-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .sf-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d7ddd9;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .10);
+      text-decoration: none;
+      transition: all .3s ease;
+      font-size: 15px;
+    }
+
+    .sf-social a:hover {
+      background: #EBB829;
+      color: #14200f;
+      border-color: #EBB829;
+      transform: translateY(-3px);
+    }
+
+    .sf-col h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: #fff;
+      font-weight: 700;
+      font-size: 17px;
+      margin: 0 0 22px;
+      position: relative;
+      padding-bottom: 14px;
+    }
+
+    .sf-col h4::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 34px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #EBB829, #83BF4F);
+    }
+
+    .sf-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .sf-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #aab4ae;
+      text-decoration: none;
+      transition: color .25s, transform .25s;
+    }
+
+    .sf-links a i {
+      font-size: 9px;
+      color: #EBB829;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all .3s ease;
+    }
+
+    .sf-links a:hover {
+      color: #EBB829;
+      transform: translateX(4px);
+    }
+
+    .sf-links a:hover i {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .sf-contact li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: #aab4ae;
+    }
+
+    .sf-contact .sf-ci {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(235, 184, 41, .08);
+      border: 1px solid rgba(235, 184, 41, .22);
+      color: #EBB829;
+      font-size: 14px;
+    }
+
+    .sf-contact small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #6f7b74;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .sf-contact a {
+      color: #e6ebe8;
+      text-decoration: none;
+      transition: color .25s;
+    }
+
+    .sf-contact a:hover {
+      color: #EBB829;
+    }
+
+    .sf-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(37, 211, 102, .1);
+      border: 1px solid rgba(37, 211, 102, .35);
+      color: #5fe38f !important;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all .3s ease;
+    }
+
+    .sf-wa:hover {
+      background: #25d366;
+      color: #06210f !important;
+      transform: translateY(-2px);
+    }
+
+    /* Bottom bar */
+    .sf-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      font-size: 12.5px;
+      color: #6f7b74;
+    }
+
+    .sf-legal {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 18px;
+    }
+
+    .sf-legal a {
+      color: #8f9b94;
+      text-decoration: none;
+      transition: color .25s;
+    }
+
+    .sf-legal a:hover {
+      color: #EBB829;
+    }
+
+    .sf-legal .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #3b4741;
+    }
+
+    .sf-top {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: #EBB829;
+      text-decoration: none;
+      transition: all .3s ease;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .sf-top:hover {
+      background: #EBB829;
+      color: #14200f;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 960px) {
+      .sf-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 42px 36px;
+      }
+
+      .sf-grid>div:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sf-wrap {
+        padding: 0 22px;
+      }
+
+      .sf-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sf-news {
+        padding: 44px 0 36px;
+      }
+
+      .sf-news-text h3 {
+        font-size: 24px;
+      }
+
+      .sf-form {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sf-footer * {
+        transition: none !important;
+      }
+    }
+
+    /* ---------- BOOKING MODAL ---------- */
+
+    .demo-btn {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold-light);
+      font: 600 0.8rem "DM Sans", sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: .3s var(--ease);
+    }
+
+    .demo-btn:hover {
+      background: var(--gold);
+      color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Modal shell ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(4, 10, 8, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .4s var(--ease), visibility .4s;
+    }
+
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 1040px;
+      max-height: 94vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      background: var(--cream);
+      border-radius: 22px;
+      box-shadow: 0 50px 120px -20px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 255, 255, .6);
+      transform: translateY(40px) scale(.96);
+      opacity: 0;
+      transition: transform .6s var(--ease), opacity .5s var(--ease);
+    }
+
+    .modal.open .modal-card {
+      transform: none;
+      opacity: 1;
+    }
+
+    /* ---------- Intro panel ---------- */
+    .booking-intro {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 46px 40px;
+      background:
+        linear-gradient(180deg, rgba(4, 12, 9, .35) 0%, rgba(4, 12, 9, .92) 100%),
+        url("https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=900&q=80") center/cover;
+    }
+
+    .booking-intro::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(500px 240px at 0% 0%, rgba(201, 162, 77, .25), transparent 60%);
+    }
+
+    .booking-intro>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .booking-intro h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 2.6rem;
+      line-height: 1.1;
+      margin: 20px 0 16px;
+    }
+
+    .booking-intro h2 em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .booking-intro p {
+      color: rgba(255, 255, 255, .78);
+      font-size: .92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .booking-steps {
+      list-style: none;
+      margin: 34px 0 0;
+      padding: 0;
+      counter-reset: s;
+    }
+
+    .booking-steps li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 18px 0;
+      color: rgba(255, 255, 255, .86);
+      font-size: .85rem;
+      transition: opacity .4s;
+    }
+
+    .booking-steps li .sn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201, 162, 77, .6);
+      color: var(--gold-light);
+      font-size: .72rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .04);
+      transition: .4s var(--ease);
+    }
+
+    .booking-steps li.done .sn {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .booking-steps li.current .sn {
+      box-shadow: 0 0 0 6px rgba(201, 162, 77, .18);
+    }
+
+    .booking-steps li.current {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .trust {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .trust i {
+      color: var(--gold-light);
+    }
+
+    /* ---------- Main panel ---------- */
+    .booking-main {
+      position: relative;
+      padding: 42px 46px 34px;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      transition: .3s var(--ease);
+      z-index: 3;
+    }
+
+    .modal-close:hover {
+      color: var(--ink);
+      border-color: var(--gold);
+      transform: rotate(90deg);
+    }
+
+    .booking-main h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--ink);
+      font-size: 2rem;
+      margin: 0 0 6px;
+    }
+
+    .booking-sub {
+      color: var(--muted);
+      font-size: .85rem;
+      margin: 0 0 24px;
+    }
+
+    /* Progress */
+    .progress {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .progress span {
+      height: 4px;
+      border-radius: 4px;
+      background: #ebe5d8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress span::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #b8893a, var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .6s var(--ease);
+    }
+
+    .progress span.on::after {
+      transform: scaleX(1);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: -18px 0 26px;
+    }
+
+    /* Steps */
+    .booking-step {
+      display: none;
+    }
+
+    .booking-step.active {
+      display: block;
+      animation: stepIn .55s var(--ease) both;
+    }
+
+    .booking-step.leaving {
+      animation: stepOut .25s ease both;
+    }
+
+    @keyframes stepIn {
+      from {
+        opacity: 0;
+        transform: translateX(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes stepOut {
+      to {
+        opacity: 0;
+        transform: translateX(-16px);
+      }
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      display: block;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #5c645d;
+      margin-bottom: 8px;
+    }
+
+    .field .control {
+      position: relative;
+    }
+
+    .field .control>i.lead {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a39c8e;
+      font-size: .85rem;
+      pointer-events: none;
+      transition: color .3s;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      font: 400 .92rem "DM Sans", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #ddd5c6;
+      border-radius: 12px;
+      padding: 14px 16px 14px 42px;
+      outline: none;
+      transition: border-color .3s, box-shadow .3s, background .3s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field select {
+      padding-right: 40px;
+      cursor: pointer;
+      background-image: none;
+    }
+
+    .field .control::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a39c8e;
+      font-size: .7rem;
+      pointer-events: none;
+    }
+
+    .field.no-chevron .control::after {
+      display: none;
+    }
+
+    .field textarea {
+      padding-left: 16px;
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(201, 162, 77, .15);
+    }
+
+    .field .control:focus-within>i.lead {
+      color: var(--gold);
+    }
+
+    .field.invalid input,
+    .field.invalid select,
+    .field.invalid textarea {
+      border-color: #d9534f;
+      box-shadow: 0 0 0 4px rgba(217, 83, 79, .1);
+    }
+
+    .field .err {
+      display: none;
+      margin-top: 6px;
+      font-size: .74rem;
+      color: #c2423d;
+    }
+
+    .field.invalid .err {
+      display: block;
+      animation: shake .4s;
+    }
+
+    @keyframes shake {
+
+      20%,
+      60% {
+        transform: translateX(-4px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    /* Stepper */
+    .stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd5c6;
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .stepper button {
+      width: 46px;
+      height: 48px;
+      border: 0;
+      background: #f8f4ea;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: .2s;
+    }
+
+    .stepper button:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .stepper input {
+      flex: 1;
+      text-align: center;
+      border: 0;
+      outline: 0;
+      font: 600 1rem "DM Sans", sans-serif;
+      color: var(--ink);
+      padding: 12px 0;
+      min-width: 0;
+      -moz-appearance: textfield;
+    }
+
+    .stepper input::-webkit-inner-spin-button,
+    .stepper input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Style cards */
+    .style-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .style-option {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .style-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .style-option .card {
+      height: 100%;
+      border: 1px solid #ddd5c6;
+      border-radius: 14px;
+      background: #fff;
+      padding: 16px 8px 14px;
+      text-align: center;
+      transition: .35s var(--ease);
+    }
+
+    .style-option .card i {
+      display: block;
+      font-size: 1.15rem;
+      color: #a39c8e;
+      margin-bottom: 8px;
+      transition: .3s;
+    }
+
+    .style-option .card b {
+      display: block;
+      font-size: .8rem;
+      color: #3f4740;
+      font-weight: 700;
+    }
+
+    .style-option .card small {
+      display: block;
+      font-size: .66rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .style-option:hover .card {
+      transform: translateY(-3px);
+      border-color: #cfc3a8;
+    }
+
+    .style-option input:checked+.card {
+      border-color: var(--gold);
+      background: linear-gradient(180deg, #fffaf0, #fbf1da);
+      box-shadow: 0 10px 24px -10px rgba(201, 162, 77, .55);
+    }
+
+    .style-option input:checked+.card i {
+      color: var(--gold);
+      transform: scale(1.12);
+    }
+
+    .style-option input:checked+.card b {
+      color: #7d5b1b;
+    }
+
+    .style-option input:focus-visible+.card {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* Review */
+    .review {
+      grid-column: 1 / -1;
+      border: 1px dashed #d8cdb6;
+      border-radius: 14px;
+      padding: 18px 20px;
+      background: #fffaf0;
+    }
+
+    .review h4 {
+      margin: 0 0 12px;
+      font: 700 .66rem "DM Sans", sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #8c6827;
+    }
+
+    .review dl {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 22px;
+      margin: 0;
+    }
+
+    .review dt {
+      font-size: .7rem;
+      color: var(--muted);
+    }
+
+    .review dd {
+      margin: 2px 0 0;
+      font-size: .88rem;
+      color: var(--ink);
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    /* Actions */
+    .step-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 40px;
+      cursor: pointer;
+      font: 700 .74rem "DM Sans", sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 15px 26px;
+      transition: .35s var(--ease);
+    }
+
+    .btn-primary {
+      border: 0;
+      color: var(--ink);
+      background: linear-gradient(135deg, #b8893a, #ecd28f 55%, #c9a24d);
+      box-shadow: 0 12px 28px -10px rgba(201, 162, 77, .7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px -10px rgba(201, 162, 77, .8);
+    }
+
+    .btn-primary:disabled {
+      opacity: .7;
+      cursor: wait;
+      transform: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #cfc6b7;
+      color: #5d625d;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .btn i.arrow {
+      transition: transform .3s var(--ease);
+    }
+
+    .btn-primary:hover i.arrow {
+      transform: translateX(4px);
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(13, 24, 21, .25);
+      border-top-color: var(--ink);
+      animation: spin .8s linear infinite;
+      display: none;
+    }
+
+    .btn-primary.loading .spinner {
+      display: inline-block;
+    }
+
+    .btn-primary.loading .label-default {
+      opacity: .6;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .booking-note {
+      margin: 16px 0 0;
+      font-size: .74rem;
+      color: #767c75;
+      line-height: 1.6;
+    }
+
+    .booking-note i {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+
+    /* Success */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 50px 10px 20px;
+    }
+
+    .form-success.show {
+      display: block;
+      animation: stepIn .7s var(--ease) both;
+    }
+
+    .success-ring {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fbf1da, #f2dca6);
+      color: #9b7326;
+      font-size: 2rem;
+    }
+
+    .success-ring::before,
+    .success-ring::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      opacity: 0;
+      animation: ring 2.4s var(--ease) infinite;
+    }
+
+    .success-ring::after {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes ring {
+      0% {
+        transform: scale(.9);
+        opacity: .8;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .form-success h3 {
+      font-size: 2.2rem;
+    }
+
+    .form-success p {
+      color: #666d66;
+      line-height: 1.75;
+      max-width: 440px;
+      margin: 12px auto 10px;
+    }
+
+    .ref {
+      display: inline-block;
+      margin: 8px 0 26px;
+      padding: 8px 16px;
+      border: 1px dashed var(--gold);
+      border-radius: 30px;
+      font: 700 .8rem "DM Sans", sans-serif;
+      letter-spacing: .14em;
+      color: #8c6827;
+      background: #fffaf0;
+    }
+
+    /* Lock body scroll */
+    body.locked {
+      overflow: hidden;
+    }
+
+    /* ---------- Responsive ---------- */
+    /* Hakikisha kwenye skrini za simu na tablet (chini ya 900px), vipengele vinajipanga kwa mstari mmoja (stack) */
+    @media (max-width: 900px) {
+      .page {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      .filters {
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+      }
+
+      section {
+        width: 100% !important;
+        clear: both !important;
+      }
+    }
+
+    /* Weka mpangilio maalum wa vifungo vya Search na Reset */
+    .btn-row {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      width: 100% !important;
+      margin-top: 20px !important;
+      margin-bottom: 30px !important;
+      position: static !important;
+    }
+
+    .btn-row .btn-search,
+    .btn-row .btn-reset {
+      position: static !important;
+      width: 100% !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+
+    /* Tenga kabisa sehemu ya Pager (1, 2, Prev, Next) ikae chini bila kuingiliana */
+    .pager {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+      margin-top: 60px !important;
+      padding-top: 20px !important;
+      clear: both !important;
+      position: static !important;
+      transform: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+
+      <!-- Brand -->
+      <a href="#home" class="brand" aria-label="Sangu African Safari home">
+        <div class="brand-mark">🐘</div>
+
+        <div>
+          <div class="brand-title">SANGU</div>
+          <div class="brand-subtitle">African Safari</div>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="desktop-menu" id="mainMenu" aria-label="Main navigation">
+
+        <a href="#home" class="nav-link active">Home</a>
+
+        <!-- Top Tours dropdown -->
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-controls="topToursDropdown">
+            Top Tours
+          </button>
+
+          <div class="nav-dropdown-panel" id="topToursDropdown" hidden>
+
+            <div class="dropdown-heading">
+              <span class="dropdown-eyebrow">THE SANGU COLLECTION</span>
+              <h3>Find your next adventure</h3>
+            </div>
+
+            <ul class="dropdown-links">
+              <li>
+                <a href="#topTours" data-tour-tab="0">
+                  <span>Tanzania Safari</span>
+                  <small>Wildlife and iconic national parks</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="1">
+                  <span>Safari & Zanzibar</span>
+                  <small>Bush adventures and island escapes</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="2">
+                  <span>Mount Kilimanjaro</span>
+                  <small>Explore our mountain adventures</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="3">
+                  <span>Kilimanjaro & Safari</span>
+                  <small>Mountain trails and wildlife journeys</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="4">
+                  <span>Kilimanjaro, Safari & Zanzibar</span>
+                  <small>A complete Tanzania journey</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="5">
+                  <span>Zanzibar Beach Escapes</span>
+                  <small>Slow days beside the Indian Ocean</small>
+                </a>
+              </li>
+            </ul>
+
+            <a href="#topTours" class="dropdown-footer">
+              Explore all top tours <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Safaris dropdown -->
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-controls="safarisDropdown">
+            Safaris
+          </button>
+
+          <div class="nav-dropdown-panel" id="safarisDropdown" hidden>
+
+            <div class="dropdown-heading">
+              <span class="dropdown-eyebrow">YOUR SAFARI, YOUR WAY</span>
+              <h3>A journey made for you</h3>
+            </div>
+
+            <ul class="dropdown-links">
+              <li>
+                <a href="#safaris">
+                  <span>Private Tanzania Safaris</span>
+                  <small>Discover our safari collection</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="0">
+                  <span>Tanzania Wildlife Tours</span>
+                  <small>Explore our Tanzania itineraries</small>
+                </a>
+              </li>
+
+              <li>
+                <a href="#topTours" data-tour-tab="1">
+                  <span>Safari & Beach Holidays</span>
+                  <small>Combine your safari with Zanzibar</small>
+                </a>
+              </li>
+
+              <li>
+                <button type="button" class="dropdown-booking" onclick="openBooking('Custom Tanzania Safari')">
+                  <span>Tailor-Made Safari</span>
+                  <small>Plan a journey around your interests</small>
+                </button>
+              </li>
+            </ul>
+
+            <a href="#safaris" class="dropdown-footer">
+              Explore all safaris <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Normal links: no dropdown icons -->
+        <a href="#destinations" class="nav-link">Destinations</a>
+        <a href="#experiences" class="nav-link">Experiences</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <button type="button" class="search-icon" aria-label="Search">
+          ⌕
+        </button>
+
+        <button type="button" class="book-button" onclick="openBooking()">
+          <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+          <span>Book Now</span>
+          <i class="fa-solid fa-arrow-right arr" aria-hidden="true"></i>
+        </button>
+
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mainMenu">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero: moving background photos with the text on top -->
+  <section class="sx-hero" aria-label="Explore our safaris">
+    <div class="sx-slides" aria-hidden="true">
+      <div class="sx-slide" style="background-image:url('image/background.jpg')">
+      </div>
+      <div class="sx-slide" style="background-image:url('image/image/zanzibar tour.jpg')">
+      </div>
+      <div class="sx-slide" style="background-image:url('image/Days.jpg')">
+      </div>
+      <div class="sx-slide" style="background-image:url('image/leopard.jpg')">
+      </div>
+
+    </div>
+    <div class="sx-overlay" aria-hidden="true"></div>
+
+    <div class="sx-content">
+      <span class="sx-eyebrow">Explore our safaris</span>
+      <h1>Unforgettable Safaris<br>Across <span>Tanzania</span></h1>
+      <p>From the endless plains of the Serengeti to the turquoise waters of Zanzibar, our carefully crafted safaris
+        offer authentic wildlife encounters, breathtaking landscapes and unforgettable moments.</p>
+
+      <div class="sx-chips">
+        <div class="sx-chip"><span class="sx-chip-ic"><i class="fa-solid fa-leaf"></i></span>
+          <div><b>Expert Guides</b><small>Local &amp; Professional</small></div>
+        </div>
+        <div class="sx-chip"><span class="sx-chip-ic"><i class="fa-solid fa-shield-halved"></i></span>
+          <div><b>Safe &amp; Reliable</b><small>Your Safety, Our Priority</small></div>
+        </div>
+        <div class="sx-chip"><span class="sx-chip-ic"><i class="fa-solid fa-star"></i></span>
+          <div><b>Tailor-Made</b><small>Trips for Every Traveler</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page">
+
+    <!-- Sidebar -->
+    <aside class="filters" id="filters">
+      <h2>Filter Safaris</h2>
+      <p class="lead">Find the perfect safari for your Tanzania adventure.</p>
+
+      <div class="f-block">
+        <p class="f-title">Safari Type</p>
+        <label class="check"><input type="checkbox" name="type" value="classic"><span class="box"><i
+              class="fa-solid fa-check"></i></span>Classic Safari</label>
+        <label class="check"><input type="checkbox" name="type" value="luxury"><span class="box"><i
+              class="fa-solid fa-check"></i></span>Luxury Safari</label>
+        <label class="check"><input type="checkbox" name="type" value="family"><span class="box"><i
+              class="fa-solid fa-check"></i></span>Family Safari</label>
+        <label class="check"><input type="checkbox" name="type" value="honeymoon"><span class="box"><i
+              class="fa-solid fa-check"></i></span>Honeymoon Safari</label>
+        <label class="check"><input type="checkbox" name="type" value="photo"><span class="box"><i
+              class="fa-solid fa-check"></i></span>Photography Safari</label>
+        <label class="check"><input type="checkbox" name="type" value="group"><span class="box"><i
+              class="fa-solid fa-check"></i></span>Small Group Safari</label>
+      </div>
+
+      <div class="f-block">
+        <p class="f-title">Duration</p>
+        <label class="check"><input type="checkbox" name="time" value="short"><span class="box"><i
+              class="fa-solid fa-check"></i></span>1 – 5 Days</label>
+        <label class="check"><input type="checkbox" name="time" value="mid"><span class="box"><i
+              class="fa-solid fa-check"></i></span>6 – 11 Days</label>
+        <label class="check"><input type="checkbox" name="time" value="long"><span class="box"><i
+              class="fa-solid fa-check"></i></span>12+ Days</label>
+      </div>
+
+
+
+      <div class="f-block">
+        <p class="f-title">Budget (USD)</p>
+        <div class="range-labels"><span>$500</span><span id="budgetValue">$10,000+</span></div>
+        <input type="range" class="range" id="budget" min="500" max="10000" step="250" value="10000">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-search" id="searchBtn">Search Safaris</button>
+        <button class="btn-reset" id="resetBtn">Reset</button>
+      </div>
+    </aside>
+
+    <!-- Results -->
+    <section>
+      <div class="results-top">
+        <div class="count" id="countText"></div>
+        <div class="sort">
+          <span>Sort by</span>
+          <select id="sort">
+            <option value="popular">Most popular</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="days-asc">Duration: shortest</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="list" id="list"></div>
+      <div class="empty" id="empty" style="display:none;">
+        <i class="fa-regular fa-face-meh"></i>
+        <h4>No safaris match these filters</h4>
+        <p>Try adjusting the safari type, duration, destination or budget.</p>
+      </div>
+
+      <nav class="pager" id="pager" aria-label="Pagination"></nav>
+      <p class="pager-info" id="pagerInfo"></p>
+    </section>
+  </div>
+
+
+  <div style="height:60px;"></div>
+
+  <footer class="sf-footer">
+    <div class="sf-wrap">
+
+      <!-- Newsletter band -->
+      <div class="sf-news">
+        <div class="sf-news-text">
+          <span class="sf-kicker"><i class="fa-solid fa-envelope-open-text"></i> Travel insights</span>
+          <h3>Get safari inspiration in your inbox</h3>
+        </div>
+        <form class="sf-form" id="sfSubscribe" novalidate>
+          <i class="fa-regular fa-envelope"></i>
+          <input type="email" id="sfEmail" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <p class="sf-thanks" id="sfThanks"><i class="fa-solid fa-circle-check"></i> Thank you, you are subscribed.
+      </p>
+
+      <!-- Main grid -->
+      <div class="sf-grid">
+
+        <div>
+          <a href="#home" class="sf-brand">
+            <div class="sf-mark"><i class="fa-solid fa-compass"></i></div>
+            <div>
+              <span class="sf-brand-title">SANGU</span>
+              <span class="sf-brand-sub">African Safari</span>
+            </div>
+          </a>
+          <p class="sf-about">
+            Private Tanzania safaris, Kilimanjaro adventures and Zanzibar escapes, thoughtfully designed by
+            local experts.
+          </p>
+          <div class="sf-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+          </div>
+        </div>
+
+        <div class="sf-col">
+          <h4>Explore</h4>
+          <ul class="sf-links">
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Safari Packages</a></li>
+            <li><a href="#destinations"><i class="fa-solid fa-chevron-right"></i> Destinations</a></li>
+            <li><a href="#experiences"><i class="fa-solid fa-chevron-right"></i> Experiences</a></li>
+            <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> About Sangu</a></li>
+          </ul>
+        </div>
+
+        <div class="sf-col">
+          <h4>Popular Journeys</h4>
+          <ul class="sf-links">
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Serengeti Safari</a></li>
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Ngorongoro Safari</a></li>
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Safari &amp; Zanzibar</a></li>
+            <li><a href="#safaris"><i class="fa-solid fa-chevron-right"></i> Kilimanjaro Trek</a></li>
+          </ul>
+        </div>
+
+        <div class="sf-col">
+          <h4>Contact</h4>
+          <ul class="sf-links sf-contact" style="gap:20px;">
+            <li>
+              <span class="sf-ci"><i class="fa-solid fa-location-dot"></i></span>
+              <div><small>Office</small>Arusha, Tanzania</div>
+            </li>
+            <li>
+              <span class="sf-ci"><i class="fa-solid fa-phone"></i></span>
+              <div><small>Call</small><a href="tel:+255700000000">+255 700 000 000</a></div>
+            </li>
+            <li>
+              <span class="sf-ci"><i class="fa-solid fa-envelope"></i></span>
+              <div><small>Email</small><a href="mailto:info@sanguafricansafari.com">info@sanguafricansafari.com</a>
+              </div>
+            </li>
+            <li>
+              <span class="sf-ci"><i class="fa-brands fa-whatsapp"></i></span>
+              <div>
+                <small>WhatsApp</small>
+                <a class="sf-wa" href="https://wa.me/255700000000" target="_blank" rel="noopener">Chat
+                  with us <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="sf-trust">
+        <span><i class="fa-solid fa-shield-halved"></i> Licensed &amp; insured operator</span>
+        <span><i class="fa-solid fa-user-tie"></i> Local expert guides</span>
+        <span><i class="fa-solid fa-headset"></i> Dedicated trip support</span>
+        <span><i class="fa-solid fa-lock"></i> Secure enquiries</span>
+      </div>
+      <div class="sf-bottom">
+        <span>&copy; 2026 Sangu African Safari. All rights reserved.</span>
+        <div class="sf-legal">
+          <a href="#">Privacy Policy</a><span class="dot"></span>
+          <a href="#">Terms &amp; Conditions</a><span class="dot"></span>
+          <a href="#">Cancellation Policy</a>
+          <a href="#home" class="sf-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BOOKING MODAL -->
+  <div class="modal" id="bookingModal" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="bookingTitle">
+    <div class="modal-card">
+
+      <!-- Intro -->
+      <aside class="booking-intro">
+        <div>
+          <span class="eyebrow">Sangu African Safari</span>
+          <h2 id="bookingTitle">Begin Your<br><em>Wild</em> Journey.</h2>
+          <p>Tell us what you dream of, and our local safari specialists will create an itinerary made
+            specifically for you.</p>
+        </div>
+
+        <ol class="booking-steps" id="introSteps">
+          <li class="current" data-i="1"><span class="sn">01</span> Share your trip details</li>
+          <li data-i="2"><span class="sn">02</span> Receive your tailored itinerary</li>
+          <li data-i="3"><span class="sn">03</span> Confirm after availability check</li>
+        </ol>
+
+        <div class="trust">
+          <i class="fa-solid fa-shield-halved"></i> Licensed local operator &middot; No payment required today
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <section class="booking-main">
+        <button class="modal-close" onclick="closeBooking()" aria-label="Close booking form"><i
+            class="fa-solid fa-xmark"></i></button>
+
+        <div id="bookingFormArea">
+          <h3>Plan Your Safari</h3>
+          <p class="booking-sub">Free consultation &middot; Tailor-made itinerary &middot; Reply within 24
+            hours</p>
+
+          <div class="progress" aria-hidden="true">
+            <span class="on"></span><span></span><span></span>
+          </div>
+          <div class="progress-label"><span id="progressText">Step 1 of 3</span><span id="progressName">Trip
+              details</span></div>
+
+          <form id="bookingForm" novalidate>
+
+            <!-- STEP 1 -->
+            <div class="booking-step active" data-step="1">
+              <div class="form-grid">
+                <div class="field full">
+                  <label for="safariChoice">Preferred Safari or Destination</label>
+                  <div class="control">
+                    <i class="fa-solid fa-map lead"></i>
+                    <select id="safariChoice" required>
+                      <option value="">Choose your experience</option>
+                      <option>Serengeti &amp; Ngorongoro Discovery</option>
+                      <option>Mount Kilimanjaro Expedition</option>
+                      <option>Zanzibar Island Getaway</option>
+                      <option>Maasai Culture Experience</option>
+                      <option>Tarangire National Park Safari</option>
+                      <option>Lake Manyara &amp; Arusha Adventure</option>
+                      <option>Custom / Tailor-Made Safari</option>
+                    </select>
+                  </div>
+                  <div class="err">Please choose an experience.</div>
+                </div>
+
+                <div class="field">
+                  <label for="arrivalDate">Preferred Arrival Date</label>
+                  <div class="control">
+                    <i class="fa-regular fa-calendar lead"></i>
+                    <input id="arrivalDate" type="date" required>
+                  </div>
+                  <div class="err">Please pick a date from today onward.</div>
+                </div>
+
+                <div class="field">
+                  <label for="tripLength">Trip Length</label>
+                  <div class="control">
+                    <i class="fa-regular fa-clock lead"></i>
+                    <select id="tripLength" required>
+                      <option value="">Select days</option>
+                      <option>3–4 days</option>
+                      <option>5–7 days</option>
+                      <option>8–10 days</option>
+                      <option>11–14 days</option>
+                      <option>15+ days</option>
+                    </select>
+                  </div>
+                  <div class="err">Please select a trip length.</div>
+                </div>
+
+                <div class="field">
+                  <label for="adults">Adults</label>
+                  <div class="stepper" data-target="adults">
+                    <button type="button" data-d="-1" aria-label="Fewer adults"><i
+                        class="fa-solid fa-minus"></i></button>
+                    <input id="adults" type="number" min="1" max="30" value="2" required inputmode="numeric">
+                    <button type="button" data-d="1" aria-label="More adults"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                  <div class="err">At least 1 adult is required.</div>
+                </div>
+
+                <div class="field">
+                  <label for="children">Children</label>
+                  <div class="stepper" data-target="children">
+                    <button type="button" data-d="-1" aria-label="Fewer children"><i
+                        class="fa-solid fa-minus"></i></button>
+                    <input id="children" type="number" min="0" max="20" value="0" inputmode="numeric">
+                    <button type="button" data-d="1" aria-label="More children"><i
+                        class="fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <span></span>
+                <button type="button" class="btn btn-primary" onclick="nextStep(1)">Continue <i
+                    class="fa-solid fa-arrow-right arrow"></i></button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="booking-step" data-step="2">
+              <div class="form-grid">
+                <div class="field full">
+                  <label>Preferred Travel Style</label>
+                  <div class="style-options" role="radiogroup" aria-label="Travel style">
+                    <label class="style-option">
+                      <input type="radio" name="style" value="Budget" checked>
+                      <span class="card"><i class="fa-solid fa-tent"></i><b>Budget</b><small>Smart
+                          value</small></span>
+                    </label>
+                    <label class="style-option">
+                      <input type="radio" name="style" value="Mid-Range">
+                      <span class="card"><i class="fa-solid fa-car-side"></i><b>Mid-Range</b><small>Comfort
+                          &amp; flexibility</small></span>
+                    </label>
+                    <label class="style-option">
+                      <input type="radio" name="style" value="Luxury">
+                      <span class="card"><i class="fa-solid fa-gem"></i><b>Luxury</b><small>Premium
+                          lodges</small></span>
+                    </label>
+                    <label class="style-option">
+                      <input type="radio" name="style" value="Honeymoon">
+                      <span class="card"><i class="fa-solid fa-heart"></i><b>Honeymoon</b><small>Romantic
+                          escapes</small></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="field full">
+                  <label for="specialRequests">Special Requests or Travel Interests</label>
+                  <textarea id="specialRequests"
+                    placeholder="For example: Great Migration, honeymoon, birdwatching, balloon safari, dietary needs, Zanzibar extension..."></textarea>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <button type="button" class="btn btn-ghost" onclick="previousStep(2)"><i
+                    class="fa-solid fa-arrow-left"></i> Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Your Details <i
+                    class="fa-solid fa-arrow-right arrow"></i></button>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="booking-step" data-step="3">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="fullName">Full Name</label>
+                  <div class="control">
+                    <i class="fa-regular fa-user lead"></i>
+                    <input id="fullName" type="text" placeholder="Your name" autocomplete="name" required>
+                  </div>
+                  <div class="err">Please enter your name.</div>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email Address</label>
+                  <div class="control">
+                    <i class="fa-regular fa-envelope lead"></i>
+                    <input id="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+                  </div>
+                  <div class="err">Please enter a valid email.</div>
+                </div>
+
+                <div class="field full">
+                  <label for="phone">WhatsApp / Phone Number</label>
+                  <div class="control">
+                    <i class="fa-brands fa-whatsapp lead"></i>
+                    <input id="phone" type="tel" placeholder="+255 ..." autocomplete="tel" required>
+                  </div>
+                  <div class="err">Please enter a valid phone number (9 to 15 digits).</div>
+                </div>
+
+                <div class="review" id="reviewBox" aria-live="polite">
+                  <h4>Your request at a glance</h4>
+                  <dl id="reviewList"></dl>
+                </div>
+              </div>
+
+              <div class="step-actions">
+                <button type="button" class="btn btn-ghost" onclick="previousStep(3)"><i
+                    class="fa-solid fa-arrow-left"></i> Back</button>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                  <span class="spinner"></span>
+                  <span class="label-default">Send Booking Request</span>
+                </button>
+              </div>
+
+              <p class="booking-note">
+                <i class="fa-solid fa-circle-info"></i>
+                This sends a safari enquiry, not an automatic confirmation. We confirm availability and
+                pricing before any payment.
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success -->
+        <div class="form-success" id="formSuccess" role="status">
+          <div class="success-ring"><i class="fa-solid fa-check"></i></div>
+          <h3>Asante Sana!</h3>
+          <p>Your safari enquiry is on its way. A specialist will reply within 24 hours on your email or
+            WhatsApp.</p>
+          <div class="ref" id="refCode">REF: SAF-000000</div>
+          <br>
+          <button class="btn btn-primary" onclick="closeBooking()">Close <i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const IMG = {
+      leopard: "image/serengeti.safaris.jpg", leopard: "image/manyara .jpg",
+      lion: "image/zanzibar tour.jpg",
+      serengeti: "image/zanzibar-safaris.avif", serengeti: "image/widlbest.jpg",
+      wildebeest: "image/zanzibar tour.jpg",
+      zanzibar: "image/beach.jpeg", "zanzibar": "image/zanzibar tours.jpg",
+      wildebeest: "image/tree.jpg",
+      Kili: "image/Support my Africa New Life fundraiser to hike Kilimanjaro.jpeg",
+      manyara: "image/elephant 1.jpg",
+      mbuzi: "image/serengeti.safaris.jpg",
+      family: "image/family.jpg",
+      grand: "image/grand.jpg",
+      Days: "image/Days.jpg",
+      Lemosho: "image/lemosho.jpeg",
+      triple: "image/ngorongoro family.jpg",
+      highlit: "image/highlit.jpg",
+      travel: "image/tarangire rlephant.jpg",
+      bird: "image/bird manyara.jpg",
+
+
+    };
+
+
+    const TRIPS = [
+      {
+        title: "7 Days Serengeti & Ngorongoro Safari", cat: "Classic Safari", cats: ["classic"], dest: ["serengeti", "ngorongoro"], days: 7, price: 2850, badge: "Popular", badgeIcon: "fa-crown", ribbon: "red", img: IMG.mbuzi, icons: ["fa-paw", "fa-mountain-sun", "fa-people-group"],
+        feats: ["Big Five Encounters", "Explore the Ngorongoro Crater", "Game Drives in Central Serengeti", "Optional Visit to Olduvai Gorge"], route: ["2 nights Ngorongoro", "5 days Serengeti"], pop: 98
+      },
+      {
+        title: "6 Days Kilimanjaro & Tarangire Safari", cat: "Adventure Safari", cats: ["classic", "family"], dest: ["kilimanjaro", "tarangire", "manyara"], days: 6, price: 2420, badge: "Recommended", badgeIcon: "fa-star", ribbon: "green", img: IMG.Kili, icons: ["fa-camera", "fa-mountain-sun", "fa-people-group"],
+        feats: ["Stunning Kilimanjaro Views", "Large Elephant Herds", "Tree Climbing Lions (Tarangire)", "Cultural Experience with Local Communities"], route: ["1 night Arusha", "2 days Tarangire", "2 days Manyara"], pop: 94
+      },
+      {
+        title: "11 Days Tanzania Zanzibar Trip", cat: "Beach & Relaxation", cats: ["classic", "honeymoon"], dest: ["serengeti", "zanzibar"], days: 11, price: 2181, badge: "Beach Escape", badgeIcon: "fa-umbrella-beach", ribbon: "gold", img: IMG.zanzibar, icons: ["fa-umbrella-beach", "fa-bed", "fa-spa"],
+        feats: ["Big Five Encounters", "Breathtaking Zanzibar Beaches", "Perfect mix of Safari & Beach Relaxation"], route: ["Arusha → Tarangire → 2 days Central Serengeti", "Ngorongoro → 6 days Zanzibar"], pop: 96
+      },
+      {
+        title: "10 Days Luxury Serengeti & Zanzibar", cat: "Luxury Safari", cats: ["luxury", "zanzibar"], dest: ["serengeti", "zanzibar"], days: 10, price: 7800, badge: "Diamond Luxury", badgeIcon: "fa-gem", ribbon: "gold", img: IMG.lion, icons: ["fa-gem", "fa-bed", "fa-user-tie"],
+        feats: ["Private Guide", "Premium Tented Camps", "Seaside Finale on Zanzibar"], route: ["5 days Serengeti", "5 days Zanzibar"], pop: 97
+      },
+      {
+        title: "8 Days Great Migration Photography", cat: "Photography Safari", cats: ["photo", "classic"], dest: ["serengeti", "ngorongoro"], days: 8, price: 4200, badge: "Best Seller", badgeIcon: "fa-camera", ribbon: "red", img: IMG.wildebeest, icons: ["fa-camera", "fa-binoculars", "fa-user-tie"],
+        feats: ["Dawn Drives for Best Light", "Expert Photo Guide", "Mobile Hides Near the Herds"], route: ["3 days Serengeti", "2 nights Ngorongoro"], pop: 92
+      },
+      {
+        title: "4 Days Tarangire & Manyara Family Safari", cat: "Family Safari", cats: ["family"], dest: ["tarangire", "manyara"], days: 4, price: 1650, badge: "Family Favourite", badgeIcon: "fa-children", ribbon: "green", img: IMG.family, icons: ["fa-children", "fa-paw", "fa-people-group"],
+        feats: ["Family Rooms", "Child-Friendly Guides", "Elephant Herds and Baobabs"], route: ["2 days Tarangire", "2 days Lake Manyara"], pop: 84
+      },
+      {
+        title: "6 Days Honeymoon Safari & Beach", cat: "Honeymoon Safari", cats: ["honeymoon"], dest: ["serengeti", "zanzibar"], days: 6, price: 4650, badge: "Romantic", badgeIcon: "fa-heart", ribbon: "gold", img: IMG.zanzibar, icons: ["fa-heart", "fa-bed", "fa-spa"],
+        feats: ["Private Sunset Dinners", "Romantic Lodges", "Quiet Beach Stay for Two"], route: ["4 days Serengeti", "2 days Zanzibar"], pop: 91
+      },
+      {
+        title: "3 Days Ngorongoro Crater Highlights", cat: "Classic Safari", cats: ["classic"], dest: ["ngorongoro"], days: 3, price: 980, badge: "Quick Escape", badgeIcon: "fa-bolt", ribbon: "olive", img: IMG.highlit, icons: ["fa-mountain-sun", "fa-paw", "fa-binoculars"],
+        feats: ["Crater Descent", "Big Five Sightings", "Picnic Lunch in the Crater"], route: ["3 days Ngorongoro"], pop: 80
+      },
+      {
+        title: "12 Days Grand Tanzania Adventure", cat: "Group Safari", cats: ["group"], dest: ["serengeti", "ngorongoro", "tarangire", "manyara", "zanzibar"], days: 12, price: 5600, badge: "Group Deal", badgeIcon: "fa-people-group", ribbon: "red", img: IMG.grand, icons: ["fa-people-group", "fa-paw", "fa-umbrella-beach"],
+        feats: ["Shared Journey with Friends", "Multi-Park Circuit", "Beach Finale on Zanzibar"], route: ["Serengeti → Ngorongoro → Tarangire", "Manyara → 4 days Zanzibar"], pop: 84
+      },
+      {
+        title: "14 Days Great Migration Safari", cat: "Classic Safari", cats: ["classic", "photo"], dest: ["serengeti", "ngorongoro", "tarangire", "manyara", "kilimanjaro"], days: 14, price: 6900, badge: "Epic", badgeIcon: "fa-star", ribbon: "red", img: IMG.serengeti, icons: ["fa-paw", "fa-mountain-sun", "fa-camera"],
+        feats: ["Multi-Park Circuit", "Luxury Lodges", "Kilimanjaro Foothill Views"], route: ["4 days Serengeti", "3 days Ngorongoro", "Tarangire & Manyara"], pop: 89
+      },
+      {
+        title: "7 Days Luxury Ngorongoro & Manyara", cat: "Luxury Safari", cats: ["luxury"], dest: ["ngorongoro", "manyara"], days: 7, price: 5200, badge: "Premium", badgeIcon: "fa-gem", ribbon: "gold", img: IMG.leopard, icons: ["fa-gem", "fa-mountain-sun", "fa-user-tie"],
+        feats: ["Crater Lodge Stay", "Private Vehicle & Guide", "Flamingo Lake Visit"], route: ["3 days Ngorongoro", "3 days Lake Manyara"], pop: 87
+      },
+      {
+        title: "5 Days Kilimanjaro Lemosho Trek", cat: "Group Safari", cats: ["group", "classic"], dest: ["kilimanjaro"], days: 5, price: 2600, badge: "Trek", badgeIcon: "fa-person-hiking", ribbon: "green", img: IMG.Lemosho, icons: ["fa-person-hiking", "fa-mountain-sun", "fa-people-group"],
+        feats: ["Experienced Mountain Crew", "Scenic Lemosho Route", "Summit Guide"], route: ["5 days Kilimanjaro"], pop: 82
+      },
+      {
+        title: "9 Days Tarangire, Serengeti & Zanzibar", cat: "Family Safari", cats: ["family", "classic"], dest: ["tarangire", "serengeti", "zanzibar"], days: 9, price: 4100, badge: "Family Pick", badgeIcon: "fa-children", ribbon: "green", img: IMG.Days, icons: ["fa-children", "fa-paw", "fa-umbrella-beach"],
+        feats: ["Family Lodges", "Gentle Game Drives", "Relaxed Beach Finish"], route: ["2 days Tarangire", "4 days Serengeti", "3 days Zanzibar"], pop: 83
+      },
+      {
+        title: "4 Days Lake Manyara Birding & Safari", cat: "Photography Safari", cats: ["photo"], dest: ["manyara"], days: 4, price: 1180, badge: "Birders", badgeIcon: "fa-binoculars", ribbon: "olive", img: IMG.bird, icons: ["fa-binoculars", "fa-camera", "fa-paw"],
+        feats: ["Flamingo Lake Birding", "Tree-Climbing Lions", "Golden-Hour Photo Stops"], route: ["4 days Lake Manyara"], pop: 79
+      },
+      {
+        title: "11 Days Honeymoon Migration & Coast", cat: "Honeymoon Safari", cats: ["honeymoon", "luxury"], dest: ["serengeti", "ngorongoro", "zanzibar"], days: 11, price: 8300, badge: "Honeymoon", badgeIcon: "fa-heart", ribbon: "gold", img: IMG.manyara, icons: ["fa-heart", "fa-hot-air-balloon", "fa-spa"],
+        feats: ["Private Balloon Sunrise", "Crater Dinner for Two", "Secluded Beach Villa"], route: ["4 days Serengeti", "2 days Ngorongoro", "5 days Zanzibar"], pop: 86
+      },
+      {
+        title: "6 Days Ngorongoro & Serengeti Family", cat: "Family Safari", cats: ["family"], dest: ["ngorongoro", "serengeti"], days: 6, price: 3100, badge: "Kids Love It", badgeIcon: "fa-children", ribbon: "red", img: IMG.triple, icons: ["fa-children", "fa-paw", "fa-people-group"],
+        feats: ["Family Lodges", "Maasai Village Visit", "Safe Family Accommodation"], route: ["2 days Ngorongoro", "4 days Serengeti"], pop: 81
+      },
+      {
+        title: "8 Days Tarangire Elephants & Kili Views", cat: "Classic Safari", cats: ["classic"], dest: ["tarangire", "kilimanjaro"], days: 8, price: 3300, badge: "Value", badgeIcon: "fa-tag", ribbon: "olive", img: IMG.travel, icons: ["fa-paw", "fa-mountain-sun", "fa-camera"],
+        feats: ["Famous Baobab Trails", "Elephant Herds", "Kilimanjaro Snowcap Views"], route: ["5 days Tarangire", "3 days Kilimanjaro"], pop: 80
+      }
+    ];
+
+    const PAGE_SIZE = 10;
+    let page = 1;
+    let filtered = [];
+
+    const $ = (id) => document.getElementById(id);
+    const checked = (name) => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(i => i.value);
+    const timeBucket = (d) => d <= 5 ? "short" : d <= 11 ? "mid" : "long";
+    const fmt = (n) => n.toLocaleString("en-US");
+
+    function applyFilters(resetPage = true) {
+      const types = checked("type");
+      const times = checked("time");
+      const maxBudget = Number($("budget").value);
+
+      filtered = TRIPS.filter(t => {
+        const typeOk = types.length === 0 || t.cats.some(c => types.includes(c));
+        const timeOk = times.length === 0 || times.includes(timeBucket(t.days));
+        const budgetOk = maxBudget >= 10000 || t.price <= maxBudget;
+        return typeOk && timeOk && budgetOk;
+      });
+
+      const cmp = {
+        "popular": (a, b) => b.pop - a.pop,
+        "price-asc": (a, b) => a.price - b.price,
+        "price-desc": (a, b) => b.price - a.price,
+        "days-asc": (a, b) => a.days - b.days
+      }[$("sort").value];
+      filtered.sort(cmp);
+
+      if (resetPage) page = 1;
+      render();
+    }
+
+    // Location shown on the photo, taken from the trip title (then route)
+    const PARKS = [
+      ["Serengeti", /Serengeti/i], ["Ngorongoro", /Ngorongoro/i], ["Zanzibar", /Zanzibar/i],
+      ["Kilimanjaro", /Kilimanjaro/i], ["Tarangire", /Tarangire/i], ["Lake Manyara", /Manyara/i]
+    ];
+    function locName(t) {
+      let found = PARKS.filter(([, re]) => re.test(t.title)).map(([n]) => n);
+      if (found.length === 0) found = PARKS.filter(([, re]) => re.test(t.route.join(" "))).map(([n]) => n);
+      return found.slice(0, 2).join(" · ") || "Tanzania";
+    }
+
+    function routeHTML(route) {
+      return route.map(r => `<li class="route-item">${r.replace(/\s*(→|>)\s*/g, '<span class="chev">›</span>')}</li>`).join("");
+    }
+
+    function tripHTML(t, i) {
+      const premium = t.cats.includes("luxury") || t.cats.includes("honeymoon");
+      const bullets = t.feats.map(f => `<li>${f}</li>`).join("");
+      const route = t.route.map(r => `<li class="route-item">${r.replace(/\s*(→|>)\s*/g, '<span class="chev">›</span>')}</li>`).join("");
+
+      return `
+        <article class="trip ${premium ? "is-premium" : ""}" style="animation-delay:${i * 70}ms">
+          <div class="trip-img">
+            <img src="${t.img}" alt="${t.title}" loading="lazy">
+            <button class="heart" aria-label="Save trip"><i class="fa-regular fa-heart"></i></button>
+            <span class="badge">${t.badge}</span>
+            <span class="loc-chip">${locName(t)}</span>
+          </div>
+
+          <div class="trip-body">
+            <div class="ribbon ${t.ribbon}">
+              <div class="from">From</div>
+              <div class="amt">$${fmt(t.price)}</div>
+              <div class="per">USD / person</div>
+            </div>
+
+            <div class="cat">${t.cat}</div>
+            <h3 class="trip-title">${t.title}</h3>
+
+            <ul class="trip-list">
+              ${bullets}
+              ${route}
+            </ul>
+
+            <div class="trip-foot">
+              <button class="btn-trip">View this trip</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function renderPager(total) {
+      const pager = $("pager");
+      if (total <= 1) { pager.innerHTML = ""; return; }
+      let html = `<button class="pg nav-pg" data-page="${page - 1}" ${page === 1 ? "disabled" : ""}><i class="fa-solid fa-chevron-left"></i> Prev</button>`;
+      for (let n = 1; n <= total; n++) {
+        html += `<button class="pg ${n === page ? "active" : ""}" data-page="${n}">${n}</button>`;
+      }
+      html += `<button class="pg nav-pg" data-page="${page + 1}" ${page === total ? "disabled" : ""}>Next <i class="fa-solid fa-chevron-right"></i></button>`;
+      pager.innerHTML = html;
+    }
+
+    function render() {
+      const total = filtered.length;
+      const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (page > pages) page = pages;
+
+      const start = (page - 1) * PAGE_SIZE;
+      const items = filtered.slice(start, start + PAGE_SIZE);
+
+      $("countText").textContent = `${total} safari${total === 1 ? "" : "s"} found`;
+      $("list").innerHTML = items.map(tripHTML).join("");
+      $("empty").style.display = total === 0 ? "block" : "none";
+      $("pager").style.display = total === 0 ? "none" : "flex";
+      $("pagerInfo").textContent = total === 0 ? "" : `Showing ${start + 1}–${start + items.length} of ${total} safaris`;
+      renderPager(pages);
+    }
+
+    // Budget slider label and fill
+    function updateBudget() {
+      const b = $("budget");
+      const v = Number(b.value);
+      $("budgetValue").textContent = v >= 10000 ? "$10,000+" : `$${fmt(v)}`;
+      const pct = ((v - b.min) / (b.max - b.min)) * 100;
+      b.style.setProperty("--fill", pct + "%");
+    }
+
+    // Pagination
+    $("pager").addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-page]");
+      if (!btn || btn.disabled) return;
+      page = Number(btn.dataset.page);
+      render();
+      window.scrollTo({ top: $("list").getBoundingClientRect().top + window.scrollY - 110, behavior: "smooth" });
+    });
+
+    // Heart toggle
+    $("list").addEventListener("click", (e) => {
+      const heart = e.target.closest(".heart");
+      if (!heart) return;
+      heart.classList.toggle("on");
+      heart.querySelector("i").className = heart.classList.contains("on") ? "fa-solid fa-heart" : "fa-regular fa-heart";
+    });
+
+    // Filters
+    document.querySelectorAll('input[name="type"], input[name="time"]').forEach(el =>
+      el.addEventListener("change", () => applyFilters(true)));
+    $("budget").addEventListener("input", () => { updateBudget(); });
+    $("budget").addEventListener("change", () => applyFilters(true));
+    $("sort").addEventListener("change", () => applyFilters(false));
+
+    $("searchBtn").addEventListener("click", () => {
+      applyFilters(true);
+      $("list").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    $("resetBtn").addEventListener("click", () => {
+      document.querySelectorAll('input[name="type"], input[name="time"]').forEach(el => el.checked = false);
+      $("budget").value = 10000;
+      updateBudget();
+      applyFilters(true);
+    });
+
+    updateBudget();
+    applyFilters(true);
+
+
+    /* HEADER */
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 55);
+    });
+
+    /* MOBILE MENU */
+    const menuToggle = document.getElementById("menuToggle");
+    const mainMenu = document.getElementById("mainMenu");
+
+    menuToggle.addEventListener("click", () => {
+      mainMenu.classList.toggle("open");
+      menuToggle.textContent = mainMenu.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll("#mainMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainMenu.classList.remove("open");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    /* BOOKING MODAL */
+    const modal = document.getElementById("bookingModal");
+    const safariChoice = document.getElementById("safariChoice");
+    const bookingForm = document.getElementById("bookingForm");
+    const bookingFormArea = document.getElementById("bookingFormArea");
+    const formSuccess = document.getElementById("formSuccess");
+    const submitBtn = document.getElementById("submitBtn");
+    const arrivalDate = document.getElementById("arrivalDate");
+    let bookingStep = 1;
+    let lastFocus = null;
+
+    const STEP_NAMES = ["Trip details", "Travel style", "Your details"];
+
+    // Min date = today (local time)
+    (function setMinDate() {
+      const d = new Date();
+      d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+      arrivalDate.min = d.toISOString().slice(0, 10);
+    })();
+
+    // ---------- Open / close ----------
+    function openBooking(selectedSafari = "") {
+      lastFocus = document.activeElement;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("locked");
+
+      if (selectedSafari) {
+        const match = [...safariChoice.options].find(o => o.text.toLowerCase().includes(selectedSafari.toLowerCase()));
+        safariChoice.value = match ? match.value : "Custom / Tailor-Made Safari";
+      }
+      setTimeout(() => {
+        const first = modal.querySelector('.booking-step.active input, .booking-step.active select, .booking-step.active button');
+        if (first) first.focus({ preventScroll: true });
+      }, 450);
+    }
+
+    function closeBooking() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("locked");
+      if (lastFocus) lastFocus.focus();
+
+      setTimeout(() => {
+        bookingFormArea.style.display = "block";
+        formSuccess.classList.remove("show");
+        bookingForm.reset();
+        clearErrors();
+        document.getElementById("children").value = 0;
+        document.getElementById("adults").value = 2;
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+        showBookingStep(1, true);
+      }, 450);
+    }
+
+    modal.addEventListener("click", e => { if (e.target === modal) closeBooking(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("open")) return;
+      if (e.key === "Escape") closeBooking();
+      if (e.key === "Tab") trapFocus(e);
+    });
+
+    function trapFocus(e) {
+      const focusables = [...modal.querySelectorAll('.booking-step.active button, .booking-step.active input, .booking-step.active select, .booking-step.active textarea, .modal-close')]
+        .filter(el => !el.disabled && el.offsetParent !== null);
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    // ---------- Steps ----------
+    function showBookingStep(step, instant = false) {
+      const current = document.querySelector(".booking-step.active");
+      const next = document.querySelector(`.booking-step[data-step="${step}"]`);
+      bookingStep = step;
+
+      const swap = () => {
+        document.querySelectorAll(".booking-step").forEach(el => el.classList.remove("active", "leaving"));
+        next.classList.add("active");
+        const first = next.querySelector("input, select, textarea, button:not(.modal-close)");
+        if (first && !instant) setTimeout(() => first.focus({ preventScroll: true }), 50);
+      };
+
+      if (current && current !== next && !instant) {
+        current.classList.add("leaving");
+        setTimeout(swap, 220);
+      } else {
+        swap();
+      }
+
+      // Progress bar + labels
+      document.querySelectorAll(".progress span").forEach((bar, i) => bar.classList.toggle("on", i < step));
+      document.getElementById("progressText").textContent = `Step ${step} of 3`;
+      document.getElementById("progressName").textContent = STEP_NAMES[step - 1];
+
+      // Intro checklist
+      document.querySelectorAll("#introSteps li").forEach(li => {
+        const i = Number(li.dataset.i);
+        li.classList.toggle("done", i < step);
+        li.classList.toggle("current", i === step);
+      });
+
+      if (step === 3) renderReview();
+    }
+
+    function validateStep(step) {
+      const stepEl = document.querySelector(`.booking-step[data-step="${step}"]`);
+      let firstBad = null;
+      stepEl.querySelectorAll("[required]").forEach(input => {
+        const field = input.closest(".field");
+        const ok = input.checkValidity() && !(input.type === "tel" && input.value.replace(/\D/g, "").length < 9);
+        field.classList.toggle("invalid", !ok);
+        if (!ok && !firstBad) firstBad = input;
+      });
+      if (firstBad) firstBad.focus();
+      return !firstBad;
+    }
+
+    function clearErrors() {
+      document.querySelectorAll(".field.invalid").forEach(f => f.classList.remove("invalid"));
+    }
+
+    function nextStep(current) {
+      clearErrors();
+      if (!validateStep(current)) return;
+      showBookingStep(current + 1);
+    }
+
+    function previousStep(current) {
+      clearErrors();
+      showBookingStep(current - 1);
+    }
+
+    // Clear error state as the user types
+    document.querySelectorAll("#bookingForm [required]").forEach(input => {
+      input.addEventListener("input", () => {
+        if (input.checkValidity()) input.closest(".field").classList.remove("invalid");
+      });
+    });
+
+    // ---------- Steppers ----------
+    document.querySelectorAll(".stepper").forEach(stepper => {
+      const input = stepper.querySelector("input");
+      stepper.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const min = Number(input.min), max = Number(input.max);
+          const val = Math.min(max, Math.max(min, Number(input.value || 0) + Number(btn.dataset.d)));
+          input.value = val;
+          input.dispatchEvent(new Event("input"));
+        });
+      });
+    });
+
+    // ---------- Review ----------
+    function renderReview() {
+      const style = bookingForm.querySelector('input[name="style"]:checked')?.value || "—";
+      const date = arrivalDate.value ? new Date(arrivalDate.value).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "—";
+      const rows = [
+        ["Experience", safariChoice.value || "—"],
+        ["Arrival", date],
+        ["Length", document.getElementById("tripLength").value || "—"],
+        ["Travellers", `${document.getElementById("adults").value} adult(s), ${document.getElementById("children").value} child(ren)`],
+        ["Style", style],
+        ["Name", document.getElementById("fullName").value || "—"]
+      ];
+      document.getElementById("reviewList").innerHTML = rows
+        .map(([k, v]) => `<div><dt>${k}</dt><dd>${escapeHtml(v)}</dd></div>`).join("");
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+
+    // ---------- Submit ----------
+    bookingForm.addEventListener("submit", e => {
+      e.preventDefault();
+      clearErrors();
+      if (!validateStep(3)) return;
+
+      submitBtn.classList.add("loading");
+      submitBtn.disabled = true;
+
+      // TODO: replace this simulated delay with your real request
+      // (Formspree, EmailJS, WhatsApp API or your backend).
+      setTimeout(() => {
+        const ref = "SAF-" + Math.floor(100000 + Math.random() * 900000);
+        document.getElementById("refCode").textContent = "REF: " + ref;
+        bookingFormArea.style.display = "none";
+        formSuccess.classList.add("show");
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+      }, 1400);
+    });
+  </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/69a0649c9825341c37479e3f/1k53341hq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>
